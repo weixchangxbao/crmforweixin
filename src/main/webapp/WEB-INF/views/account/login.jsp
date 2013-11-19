@@ -34,7 +34,13 @@
 				<input type="password" id="password" name="password" class="input-medium required"/>
 			</div>
 		</div>
-				
+		<div class="control-group">
+			<label for="kaptcha" class="control-label">验证码:</label>
+			<div class="controls">
+				<input type="text" id="kaptcha" name="kaptcha" class="input-medium required"/>
+				<img  src="/images/kaptcha.jpg" id="kaptchaImg">
+			</div>
+		</div>
 		<div class="control-group">
 			<div class="controls">
 				<label class="checkbox" for="rememberMe"><input type="checkbox" id="rememberMe" name="rememberMe"/> 记住我</label>
@@ -47,6 +53,10 @@
 	<script>
 		$(document).ready(function() {
 			$("#loginForm").validate();
+			$("#kaptchaImg").click(function() {  
+                $(this).hide().attr('src',  
+                        'kaptcha.jpg?' + Math.floor(Math.random() * 100)).fadeIn();  
+            });
 		});
 	</script>
 </body>
