@@ -61,12 +61,13 @@
 							</div>
 							<div class="clearfix"></div>
 							
+							<!-- 
 							<div class="input-prepend" title="captcha" data-rel="tooltip">
-								<span class="add-on"><i class="icon-camera"></i></span><input type="text" id="kaptcha" name="kaptcha" class="input-medium required"/>
+								<span class="add-on"><i class="icon-camera"></i></span><input type="text" id="kaptcha" name="kaptcha" class="input-large span10 required"/>
 								<img  src="images/kaptcha.jpg" id="kaptchaImg">
 							</div>
 							<div class="clearfix"></div>
-
+ -->
 							<div class="input-prepend">
 							<label class="remember" for="remember"><input type="checkbox" id="rememberMe" />Remember me</label>
 							</div>
@@ -83,14 +84,14 @@
 		
 	</div><!--/.fluid-container-->
 	
-	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="${ctx}/static/js/jquery-1.7.2.min.js"></script>
 	<!-- jQuery UI -->
-	<script src="js/jquery-ui-1.8.21.custom.min.js"></script>
+	<script src="${ctx}/static/js/jquery-ui-1.8.21.custom.min.js"></script>
 	<!-- transition / effect library -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="${ctx}/static/js/bootstrap.min.js"></script>
 
 	<!-- library for cookie management -->
-	<script src="js/jquery.cookie.js"></script>
+	<script src="${ctx}/static/js/jquery.cookie.js"></script>
 	<script src="${ctx}/static/jquery-validation/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
 	<script src="${ctx}/static/jquery-validation/1.11.1/messages_bs_zh.js" type="text/javascript"></script>
 
