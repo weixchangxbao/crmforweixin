@@ -41,8 +41,13 @@
       <jdbc.driver.version>5.1.22</jdbc.driver.version>
 
   </properties>
-
+ 	
   <dependencies>
+  <dependency>
+		 <groupId>com.google.code</groupId>
+		 <artifactId>kaptcha</artifactId>
+		 <version>2.3.2</version>
+	</dependency> 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -327,11 +332,6 @@
   <dependencyManagement>
   <!-- 验证码 -->
     <dependencies>
-	   <dependency>
-		 <groupId>com.google.code.kaptcha</groupId>
-		 <artifactId>kaptcha</artifactId>
-		 <version>2.3</version>
-	</dependency>
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>

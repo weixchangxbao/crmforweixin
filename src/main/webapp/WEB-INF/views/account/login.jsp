@@ -38,7 +38,7 @@
 			<label for="kaptcha" class="control-label">验证码:</label>
 			<div class="controls">
 				<input type="text" id="kaptcha" name="kaptcha" class="input-medium required"/>
-				<img  src="/images/kaptcha.jpg" id="kaptchaImg">
+				<img  src="images/kaptcha.jpg" id="kaptchaImg">
 			</div>
 		</div>
 		<div class="control-group">
@@ -55,7 +55,7 @@
 			$("#loginForm").validate();
 			$("#kaptchaImg").click(function() {  
                 $(this).hide().attr('src',  
-                        'kaptcha.jpg?' + Math.floor(Math.random() * 100)).fadeIn();  
+                        'images/kaptcha.jpg?' + Math.floor(Math.random() * 100)).fadeIn();  
             });
 		});
 	</script>

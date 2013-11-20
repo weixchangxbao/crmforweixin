@@ -46,7 +46,7 @@ public class KaptchaFormAuthenticationFilter extends FormAuthenticationFilter{
 	
 	protected void doKaptchaValidate(HttpServletRequest request,KaptchaUsernamePasswordToken token){
 		String kaptcha = (String)request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-		
+
 		if(kaptcha != null && !kaptcha.equalsIgnoreCase(token.getKaptcha())){
 			throw new IncorrectKaptchaException("验证失败！");
 		}

@@ -9,6 +9,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="BT_User")
@@ -31,7 +34,7 @@ public class User extends IdEntity{
 	@Temporal(TemporalType.TIME)
 	private Date createTime;
 
-	private String passwd;
+	private String password;
 
 	private String comment;
 
@@ -43,6 +46,12 @@ public class User extends IdEntity{
 	private int loginTimes;
 
 	private String email;
+	
+	private String salt;
+	
+	@Transient
+	@JsonIgnore
+	private String plainPassword;
 
 	@Temporal(TemporalType.TIME)
 	private Date lastLoginTime;
@@ -118,14 +127,6 @@ public class User extends IdEntity{
 		this.createTime = createTime;
 	}
 
-	public String getPasswd() {
-		return passwd;
-	}
-
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
-
 	public String getComment() {
 		return comment;
 	}
@@ -189,5 +190,30 @@ public class User extends IdEntity{
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+	public String getPlainPassword() {
+		return plainPassword;
+	}
+
+	public void setPlainPassword(String plainPassword) {
+		this.plainPassword = plainPassword;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	
 }

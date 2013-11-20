@@ -1,15 +1,13 @@
 package com.brother.basic.repository;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.brother.basic.entity.User;
 
 
 
-public interface UserDao extends Repository<User, Long>{
+public interface UserDao extends PagingAndSortingRepository<User, Long>{
 	
-	public User save(User user);
+	public User findByUsername(String username);
 	
-	
-	public User findUserById(Long Id);
 }
