@@ -7,48 +7,92 @@
 
 <html>
 <head>
-	<title>登录页</title>
+	<title>Login</title>
+
+	<!-- The styles -->
+	<link id="bs-css" href="${ctx}/static/css/bootstrap-cerulean.css" rel="stylesheet">
+	<style type="text/css">
+	  body {
+		padding-bottom: 40px;
+	  }
+	  .sidebar-nav {
+		padding: 9px 0;
+	  }
+	</style>
+	<link href="${ctx}/static/css/charisma-app.css" rel="stylesheet">
+	<link href="${ctx}/static/jquery-validation/1.11.1/validate.css" type="text/css" rel="stylesheet" />
+	<!-- The fav icon -->
+	<link rel="shortcut icon" href="${ctx}/static/img/favicon.ico">
 </head>
 
 <body>
-	<form id="loginForm" action="${ctx}/login" method="post" class="form-horizontal">
-	<%
-	String error = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
-	if(error != null){
-	%>
-		<div class="alert alert-error input-medium controls">
-			<button class="close" data-dismiss="alert">×</button>登录失败，请重试.
-		</div>
-	<%
-	}
-	%>
-		<div class="control-group">
-			<label for="username" class="control-label">名称:</label>
-			<div class="controls">
-				<input type="text" id="username" name="username"  value="${username}" class="input-medium required"/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label for="password" class="control-label">密码:</label>
-			<div class="controls">
-				<input type="password" id="password" name="password" class="input-medium required"/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label for="kaptcha" class="control-label">验证码:</label>
-			<div class="controls">
-				<input type="text" id="kaptcha" name="kaptcha" class="input-medium required"/>
-				<img  src="images/kaptcha.jpg" id="kaptchaImg">
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<label class="checkbox" for="rememberMe"><input type="checkbox" id="rememberMe" name="rememberMe"/> 记住我</label>
-				<input id="submit_btn" class="btn btn-primary" type="submit" value="登录"/> <a class="btn" href="${ctx}/register">注册</a>
-			 	<span class="help-block">(管理员: <b>admin/admin</b>, 普通用户: <b>user/user</b>)</span>
-			</div>
-		</div>
-	</form>
+
+<div class="container-fluid">
+		<div class="row-fluid">
+		
+			<div class="row-fluid">
+				<div class="span12 center login-header">
+					<h2>欢迎登陆大银管理平台</h2>
+				</div><!--/span-->
+			</div><!--/row-->
+			
+			<div class="row-fluid">
+				<div class="well span5 center login-box">
+				<%
+				String error = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
+				if(error != null){
+				%>
+					<div class="alert alert-info">
+									登陆信息有误，请检查后重新输入
+								</div>
+				<%
+				}
+				%>
+					
+					<form class="form-horizontal" action="${ctx}/login" method="post">
+						<fieldset>
+							<div class="input-prepend" title="Username" data-rel="tooltip">
+								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10 required" name="username" id="username" type="text" value="" />
+							</div>
+							<div class="clearfix"></div>
+
+							<div class="input-prepend" title="Password" data-rel="tooltip">
+								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10 required" name="password" id="password" type="password" value="" />
+							</div>
+							<div class="clearfix"></div>
+							
+							<div class="input-prepend" title="captcha" data-rel="tooltip">
+								<span class="add-on"><i class="icon-camera"></i></span><input type="text" id="kaptcha" name="kaptcha" class="input-medium required"/>
+								<img  src="images/kaptcha.jpg" id="kaptchaImg">
+							</div>
+							<div class="clearfix"></div>
+
+							<div class="input-prepend">
+							<label class="remember" for="remember"><input type="checkbox" id="rememberMe" />Remember me</label>
+							</div>
+							<div class="clearfix"></div>
+
+							<p class="center span5">
+							<button type="submit" class="btn btn-primary">Login</button>
+							</p>
+						</fieldset>
+					</form>
+				</div><!--/span-->
+			</div><!--/row-->
+				</div><!--/fluid-row-->
+		
+	</div><!--/.fluid-container-->
+	
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="js/jquery-ui-1.8.21.custom.min.js"></script>
+	<!-- transition / effect library -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- library for cookie management -->
+	<script src="js/jquery.cookie.js"></script>
+	<script src="${ctx}/static/jquery-validation/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
+	<script src="${ctx}/static/jquery-validation/1.11.1/messages_bs_zh.js" type="text/javascript"></script>
 
 	<script>
 		$(document).ready(function() {
