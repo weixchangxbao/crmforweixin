@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	//themes, change CSS with JS
 	//default theme(CSS) is cerulean, change it if needed
 	var current_theme = $.cookie('current_theme')==null ? 'cerulean' :$.cookie('current_theme');
@@ -18,7 +19,7 @@ $(document).ready(function(){
 	
 	function switch_theme(theme_name)
 	{
-		$('#bs-css').attr('href','css/bootstrap-'+theme_name+'.css');
+		$('#bs-css').attr('href','/basic/static/css/bootstrap-'+theme_name+'.css');
 	}
 	
 	//ajax menu checkbox

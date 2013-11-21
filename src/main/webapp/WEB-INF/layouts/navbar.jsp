@@ -9,7 +9,7 @@
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
          </a>
-         <a class="brand" href="index.html"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>大银管理平台</span></a>
+         <a class="brand" href="${ctx}/login/welcome"> <img alt="Charisma Logo" src="${ctx}/static/img/logo20.png" /> <span>大银管理平台</span></a>
          
          <!-- theme selector starts -->
          <div class="btn-group pull-right theme-container" >
