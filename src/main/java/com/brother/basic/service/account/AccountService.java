@@ -5,6 +5,9 @@ import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springside.modules.security.utils.Digests;
@@ -14,6 +17,7 @@ import org.springside.modules.utils.Encodes;
 import com.brother.basic.entity.User;
 import com.brother.basic.exception.ServiceException;
 import com.brother.basic.repository.UserDao;
+import com.brother.basic.search.SearchBean;
 import com.brother.basic.service.account.ShiroDbRealm.ShiroUser;
 
 @Component
@@ -28,7 +32,11 @@ public class AccountService {
 	private UserDao userDao;
 	private DateProvider dateProvider = DateProvider.DEFAULT;
 
-
+	public Page<User> getUsersByPageInfo(SearchBean search){
+		Pageable pageable = new PageRequest(search.getiDisplayStart(), search.getiDisplayLength());
+		return userDao.findAll(pageable);
+	}
+	
 	public User getUser(Long id) {
 		return userDao.findOne(id);
 	}

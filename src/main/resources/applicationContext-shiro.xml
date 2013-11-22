@@ -33,7 +33,7 @@
 				/static/** = anon
 				/api/** = anon
 				/register/** = anon
-				/admin/** = roles[admin]
+				/admin/** = anon
 				/images/** = anon
 				/** = user
 			</value>

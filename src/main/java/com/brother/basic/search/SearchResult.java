@@ -4,29 +4,27 @@ import java.util.List;
 
 public class SearchResult {
 	
-	private int iTotalRecords;
+	private long iTotalRecords;
 	
-	private int iTotalDisplayRecords;
+	private long iTotalDisplayRecords;
 	
 	private String sEcho;
 	
-	private String sColumns;
-	
-	private List<Object> aaData;
+	private List<?> aaData;
 
-	public int getiTotalRecords() {
+	public long getiTotalRecords() {
 		return iTotalRecords;
 	}
 
-	public void setiTotalRecords(int iTotalRecords) {
+	public void setiTotalRecords(long iTotalRecords) {
 		this.iTotalRecords = iTotalRecords;
 	}
 
-	public int getiTotalDisplayRecords() {
+	public long getiTotalDisplayRecords() {
 		return iTotalDisplayRecords;
 	}
 
-	public void setiTotalDisplayRecords(int iTotalDisplayRecords) {
+	public void setiTotalDisplayRecords(long iTotalDisplayRecords) {
 		this.iTotalDisplayRecords = iTotalDisplayRecords;
 	}
 
@@ -38,20 +36,14 @@ public class SearchResult {
 		this.sEcho = sEcho;
 	}
 
-	public String getsColumns() {
-		return sColumns;
-	}
 
-	public void setsColumns(String sColumns) {
-		this.sColumns = sColumns;
-	}
-
-	public List<Object> getAaData() {
+	public List<?> getAaData() {
 		return aaData;
 	}
 
-	public void setAaData(List<Object> aaData) {
+	public void setAaData(List<?> aaData) {
 		this.aaData = aaData;
 	}
+
 	
 }

@@ -167,8 +167,7 @@
     <!-- history.js for cross-browser state change on ajax -->
     <script src="${ctx}/static/js/jquery.history.js"></script>
     <!-- application script for Charisma demo -->
-    <script src="${ctx}/static/js/charisma.js"></script>
+    <script src="${ctx}/static/js/charisma.js" type="text/javascript"></script>
     
-        
 </body>
 </html>

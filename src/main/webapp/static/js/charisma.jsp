@@ -1,5 +1,12 @@
+<%@page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+
 
 $(document).ready(function(){
+	
 	//themes, change CSS with JS
 	//default theme(CSS) is cerulean, change it if needed
 	var current_theme = $.cookie('current_theme')==null ? 'cerulean' :$.cookie('current_theme');
@@ -286,38 +293,22 @@ function docReady(){
 //		$('#myModal').modal('show');
 //	});
 
-	//config userListTable
-	$('.usertable').dataTable( {
+$('.datatable').dataTable( {
 		"bProcessing": true,
 		"bServerSide": true,
-		"sAjaxSource": "/basic/admin/user",
-		"sServerMethod":"POST",
-		"aoColumns": [
-						{"sName":"username","mData": "username","sWidth":"10%" },
-						{"sName":"role","mData": "role","sClass":"center" },
-						{"sName":"department","mData": "department" ,"sClass":"center"},
-						{"sName":"createTime","mData": "createTime","sClass":"center" },
-						{"mData" : function(obj,type,val){
-							return '<a class=\"btn btn-success\" href=\"#\">'+
-									'<i class=\"icon-zoom-in icon-white\"></i>'+  
-										'View'+                                            
-									'</a>'+
-									'<a class=\"btn btn-info\" href=\"#\">'+
-									'<i class="icon-edit icon-white"></i>'+  
-										'Edit'+                                            
-									'</a>'+
-									'<a class=\"btn btn-danger\" href=\"#\">'+
-									'<i class=\"icon-trash icon-white\"></i>'+ 
-										'Delete'+
-									'</a>';
-						},"sWidth":"30%" }
-					],
 		"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
 		"sPaginationType": "bootstrap",
 		"oLanguage": {
-		"sLengthMenu": "_MENU_ records per page"
-		}
-	}
+		"sLengthMenu": "_MENU_ records per page",
+		"sAjaxSource": "${ctx}/admin/user",
+		"sServerMethod":"POST",
+		"aoColumns":[
+			{"mData":"username"},
+			{"mData":"password"},
+			{"mData":"createTime"},
+			{"mData":"department"},
+			{"mData":"telephone"}
+		]}}
 	);
 		
 	//initialize the external events for calender

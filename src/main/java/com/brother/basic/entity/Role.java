@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -31,12 +32,12 @@ public class Role extends IdEntity{
 	inverseJoinColumns={@JoinColumn(name="BT_User_ID")})
 	private Collection<User> users = new ArrayList<User>();
 
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="BT_Menu_Authority",joinColumns={@JoinColumn(name="roleId")}
 	,inverseJoinColumns={@JoinColumn(name="menuId")})
 	private Collection<Menu> menus = new ArrayList<Menu>();
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="BT_Module_Authority",joinColumns={@JoinColumn(name="roleId")}
 	,inverseJoinColumns={@JoinColumn(name="moduleId")})
 	private Collection<Module> modules = new ArrayList<Module>();
