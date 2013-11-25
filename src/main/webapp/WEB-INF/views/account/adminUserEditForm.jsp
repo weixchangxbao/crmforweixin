@@ -20,42 +20,32 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal" action="${ctx}/admin/user/create" method="post">
+						<form class="form-horizontal" action="${ctx}/admin/user/update" method="post">
 							<fieldset>
 							  
 							  <div class="control-group">
 								<label class="control-label" for="username">用户名</label>
 								<div class="controls">
-								  <input class="input-xlarge" id="username"  name="username" type="text" >
+								  <input class="input-xlarge" id="username"  name="username" type="text" value="${user.username}">
 								</div>
 							  </div>
 							  <div class="control-group">
 								<label class="control-label" for="realname">真实姓名</label>
 								<div class="controls">
-								  <input class="input-xlarge " id="realname" name="realname" type="text" value=''>
-								</div>
-							  </div>
-							  <div class="control-group">
-								<label class="control-label" for="password">密码</label>
-								<div class="controls">
-								  <input class="input-xlarge" id="password" name="password" type="password" value=''>
-								</div>
-							  </div>
-							  <div class="control-group">
-								<label class="control-label" for="checkpassword">密码确认</label>
-								<div class="controls">
-								  <input class="input-xlarge"  id="checkpassword" type="password" >
+								  <input class="input-xlarge " id="realname" name="realname" type="text" value='${user.realname}'>
 								</div>
 							  </div>
 							   <div class="control-group">
 								<label class="control-label" >角色</label>
 								<div class="controls">
 								  <input class="input-xlarge uneditable-input" id="roleids" name="roleids" style="display:none;"></input>
-								  <span class="input-xlarge uneditable-input" id="rolenames"></span>
+								  <span class="input-xlarge uneditable-input" id="rolenames">${user.rolename}</span>
+								  <c:if test="${model==null}">
 								   <a class="btn btn-success" data-toggle="modal" data-target="#roleModal">
-						                                        <i class="icon-zoom-in icon-white"></i>  
-						                                       选择                                            
-						                                </a>
+						                 <i class="icon-zoom-in icon-white"></i>  
+						                   选择                                            
+						                 </a>
+						           </c:if>
 								</div>
 							  </div>
 							  <div class="control-group">
@@ -67,18 +57,20 @@
 							  <div class="control-group" for="mobilephone">
 								<label class="control-label">手机</label>
 								<div class="controls">
-								  <input class="input-xlarge" id="mobilephone" name="mobilephone" type="text" >
+								  <input class="input-xlarge" id="mobilephone" name="mobilephone" type="text" value="${user.mobilephone}">
 								</div>
 							  </div>
 							  <div class="control-group">
 								<label class="control-label" for="telephone">电话号码</label>
 								<div class="controls">
-								  <input class="input-xlarge" id="telephone" name="telephone" type="text" >
+								  <input class="input-xlarge" id="telephone" name="telephone" type="text" value="${user.telephone}">
 								</div>
 							  </div>
 							  <div class="form-actions">
-								<button type="submit" class="btn btn-primary">Save changes</button>
-								<button class="btn">Cancel</button>
+							  <c:if test="${model==null}">
+							  	<button type="submit" class="btn btn-primary">Save changes</button>
+							  </c:if>
+								<a class="btn" href="${ctx}/admin/user">Cancel</a>
 							  </div>
 							</fieldset>
 						  </form>
@@ -121,6 +113,12 @@
 		
 		<script type="text/javascript">
 			function doBodyInit(){
+				<c:if test="${model!=null}">
+					$('input').each(function(){
+						$(this).attr('disabled','disabled' );
+					})
+				</c:if>
+				
 				$('#saveRolebtn').click(function(){
 					var rolelist='';
 					var roleIds='';

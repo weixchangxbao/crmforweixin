@@ -4,13 +4,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springside.examples.quickstart.entity.Task;
 
-import com.brother.basic.entity.User;
+import com.brother.basic.entity.Role;
 
+public interface RoleDao extends PagingAndSortingRepository<Role, Long>, JpaSpecificationExecutor<Task>{
 
-
-public interface UserDao extends PagingAndSortingRepository<User, Long>, JpaSpecificationExecutor<Task>{
-	
-	public User findByUsername(String username);
-	
-	
 }

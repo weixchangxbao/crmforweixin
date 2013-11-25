@@ -421,10 +421,15 @@ width:128px;
 background:url(../img/ajax-loaders/ajax-loader-6.gif);
 }
 
+.box-content{
+	padding:10px;
+}
+
 .box-content .nav-tabs{
 margin-right:-10px;
 margin-left:-10px;
 }
+
 #inputIcon{
 width:200px;
 }

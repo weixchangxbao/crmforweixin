@@ -27,9 +27,7 @@ public class Role extends IdEntity{
 	@Temporal(TemporalType.TIME)
 	private Date createTime;
 	
-	@OneToMany(targetEntity=User.class)
-	@JoinTable(name="BT_RoleRelUser",joinColumns={@JoinColumn(name="BT_Role_ID")},
-	inverseJoinColumns={@JoinColumn(name="BT_User_ID")})
+	@ManyToMany(mappedBy="roles",targetEntity=User.class ,fetch=FetchType.LAZY)
 	private Collection<User> users = new ArrayList<User>();
 
 	@ManyToMany(fetch=FetchType.LAZY)

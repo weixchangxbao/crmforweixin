@@ -1,17 +1,19 @@
 package com.brother.basic.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -59,10 +61,14 @@ public class User extends IdEntity{
 
 	private String lastLoginIP;
 	
-	@ManyToOne(targetEntity=Role.class)
+	@Transient
+	private String rolename;
+	
+
+	@ManyToMany(targetEntity=Role.class,fetch=FetchType.LAZY)
 	@JoinTable(name="BT_RoleRelUser",joinColumns={@JoinColumn(name="BT_User_ID")},
 	inverseJoinColumns={@JoinColumn(name="BT_Role_ID")})
-	private Role role;
+	private Collection<Role> roles= new ArrayList<Role>();
 
 	public String getUsername() {
 		return username;
@@ -184,14 +190,6 @@ public class User extends IdEntity{
 		this.lastLoginIP = lastLoginIP;
 	}
 
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
 	public String getPlainPassword() {
 		return plainPassword;
 	}
@@ -214,6 +212,23 @@ public class User extends IdEntity{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@JsonIgnore
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
+	public String getRolename() {
+		return rolename;
+	}
+
+	public void setRolename(String rolename) {
+		this.rolename = rolename;
 	}
 	
 	

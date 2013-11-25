@@ -93,7 +93,11 @@ $(document).ready(function(){
 	});
 	
 	//other things to do on document ready, seperated for ajax calls
+	doBodyInit();
+	
 	docReady();
+	
+	
 });
 		
 		
@@ -118,10 +122,10 @@ function docReady(){
 
 
 	//uniform - styler for checkbox, radio and file input
-	$("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();
+	//$("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();
 
 	//chosen - improves select
-	$('[data-rel="chosen"],[rel="chosen"]').chosen();
+	//$('[data-rel="chosen"],[rel="chosen"]').chosen();
 
 	//tabs
 	$('#myTab a:first').tab('show');
@@ -152,10 +156,6 @@ function docReady(){
 	//popover
 	$('[rel="popover"],[data-rel="popover"]').popover();
 
-	//file manager
-	var elf = $('.file-manager').elfinder({
-		url : 'misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
-	}).elfinder('instance');
 
 	//iOS / iPhone style toggle switch
 	$('.iphone-toggle').iphoneStyle();
@@ -165,66 +165,6 @@ function docReady(){
 		score : 4 //default stars
 	});
 
-	//uploadify - multiple uploads
-	$('#file_upload').uploadify({
-		'swf'      : 'misc/uploadify.swf',
-		'uploader' : 'misc/uploadify.php'
-		// Put your options here
-	});
-
-	//gallery controlls container animation
-	$('ul.gallery li').hover(function(){
-		$('img',this).fadeToggle(1000);
-		$(this).find('.gallery-controls').remove();
-		$(this).append('<div class="well gallery-controls">'+
-							'<p><a href="#" class="gallery-edit btn"><i class="icon-edit"></i></a> <a href="#" class="gallery-delete btn"><i class="icon-remove"></i></a></p>'+
-						'</div>');
-		$(this).find('.gallery-controls').stop().animate({'margin-top':'-1'},400,'easeInQuint');
-	},function(){
-		$('img',this).fadeToggle(1000);
-		$(this).find('.gallery-controls').stop().animate({'margin-top':'-30'},200,'easeInQuint',function(){
-				$(this).remove();
-		});
-	});
-
-
-	//gallery image controls example
-	//gallery delete
-	$('.thumbnails').on('click','.gallery-delete',function(e){
-		e.preventDefault();
-		//get image id
-		//alert($(this).parents('.thumbnail').attr('id'));
-		$(this).parents('.thumbnail').fadeOut();
-	});
-	//gallery edit
-	$('.thumbnails').on('click','.gallery-edit',function(e){
-		e.preventDefault();
-		//get image id
-		//alert($(this).parents('.thumbnail').attr('id'));
-	});
-
-	//gallery colorbox
-	$('.thumbnail a').colorbox({rel:'thumbnail a', transition:"elastic", maxWidth:"95%", maxHeight:"95%"});
-
-	//gallery fullscreen
-	$('#toggle-fullscreen').button().click(function () {
-		var button = $(this), root = document.documentElement;
-		if (!button.hasClass('active')) {
-			$('#thumbnails').addClass('modal-fullscreen');
-			if (root.webkitRequestFullScreen) {
-				root.webkitRequestFullScreen(
-					window.Element.ALLOW_KEYBOARD_INPUT
-				);
-			} else if (root.mozRequestFullScreen) {
-				root.mozRequestFullScreen();
-			}
-		} else {
-			$('#thumbnails').removeClass('modal-fullscreen');
-			(document.webkitCancelFullScreen ||
-				document.mozCancelFullScreen ||
-				$.noop).apply(document);
-		}
-	});
 
 	//tour
 	if($('.tour').length && typeof(tour)=='undefined')
@@ -286,39 +226,9 @@ function docReady(){
 //		$('#myModal').modal('show');
 //	});
 
+		
 	//config userListTable
-	$('.usertable').dataTable( {
-		"bProcessing": true,
-		"bServerSide": true,
-		"sAjaxSource": "/basic/admin/user",
-		"sServerMethod":"POST",
-		"aoColumns": [
-						{"sName":"username","mData": "username","sWidth":"10%" },
-						{"sName":"role","mData": "role","sClass":"center" },
-						{"sName":"department","mData": "department" ,"sClass":"center"},
-						{"sName":"createTime","mData": "createTime","sClass":"center" },
-						{"mData" : function(obj,type,val){
-							return '<a class=\"btn btn-success\" href=\"#\">'+
-									'<i class=\"icon-zoom-in icon-white\"></i>'+  
-										'View'+                                            
-									'</a>'+
-									'<a class=\"btn btn-info\" href=\"#\">'+
-									'<i class="icon-edit icon-white"></i>'+  
-										'Edit'+                                            
-									'</a>'+
-									'<a class=\"btn btn-danger\" href=\"#\">'+
-									'<i class=\"icon-trash icon-white\"></i>'+ 
-										'Delete'+
-									'</a>';
-						},"sWidth":"30%" }
-					],
-		"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
-		"sPaginationType": "bootstrap",
-		"oLanguage": {
-		"sLengthMenu": "_MENU_ records per page"
-		}
-	}
-	);
+	
 		
 	//initialize the external events for calender
 

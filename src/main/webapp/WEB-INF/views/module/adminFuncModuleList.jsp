@@ -18,7 +18,11 @@
              <div class="box-header well" data-original-title>
                  <h2><i class="icon-user"></i> 用户信息</h2>
                   <div class="box-icon">
-				<a class="btn btn-info" href="${ctx}/admin/user/add">
+                  <a class="btn btn-info" href="${ctx}/admin/user/add">
+					<i class="icon-edit icon-white"></i>  
+						位置编辑                                           
+					</a>
+				<a class="btn btn-info" href="${ctx}/admin/module/funcform">
 					<i class="icon-edit icon-white"></i>  
 						新增                                            
 					</a>
@@ -28,10 +32,11 @@
                  <table class="table table-striped table-bordered bootstrap-datatable usertable">
                    <thead>
                        <tr>
-                           <th>用户名</th>
-                           <th>角色</th>
-                           <th>创建时间</th>
-                           <th>状态</th>
+                           <th>模块名称</th>
+                           <th>区域</th>
+                           <th>位置</th>
+                           <th>图片</th>
+                           <th>页面地址</th>
                            <th>功能</th>
                        </tr>
                    </thead>   
@@ -60,16 +65,21 @@
 </div><!-- /.modal -->
      <script type="text/javascript">
      	function doBodyInit(){
+     		
      		$('.usertable').dataTable( {
      			"bProcessing": true,
      			"bServerSide": true,
-     			"sAjaxSource": "${ctx}/admin/user",
+     			"sAjaxSource": "${ctx}/admin/module/listFuncModule",
      			"sServerMethod":"POST",
      			"aoColumns": [
-     							{"sName":"username","mData": "username","sWidth":"10%" },
-     							{"sName":"rolename","mData": "rolename","sClass":"center" },
-     							{"sName":"department","mData": "department" ,"sClass":"center"},
-     							{"sName":"createTime","mData": "createTime","sClass":"center" },
+     							{"sName":"name","mData": "name","sWidth":"10%" },
+     							{"sName":"type","mData": "type","sClass":"center" },
+     							{"sName":"orderIndex","mData": "orderIndex" ,"sClass":"center"},
+     							{"sName":"picture","mData": function(obj){
+     								return '<img src=\"${ctx}/upload/'+obj.picture+'\">';
+     							}},
+     							//{"sName":"picture","mData": "picture","sClass":"center" },
+     							{"sName":"url","mData": "url","sClass":"center" },
      							{"mData" : function(obj,type,val){
      								return '<a class=\"btn btn-success\" href=\"${ctx}/admin/user/view/'+obj.id+'\">'+
      										'<i class=\"icon-zoom-in icon-white\"></i>'+  
