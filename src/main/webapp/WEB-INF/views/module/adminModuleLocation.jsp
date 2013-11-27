@@ -16,66 +16,38 @@
 					</div>
 					<div class="box-content">
 						<ul class="thumbnails gallery">
-							<li id="image-1" class="thumbnail">
-								<img class="grayscale moduleimg" src="${ctx}/static/img/gallery/thumbs/1.jpg" alt="Sample Image 1">
-								<input type="checkbox">模块一 
-							</li>
-														<li id="image-2" class="thumbnail">
-								<img class="grayscale moduleimg" src="${ctx}/static/img/gallery/thumbs/2.jpg" alt="Sample Image 2">
-								<input type="checkbox" style="margin: 0 auto">
-							</li>
-														<li id="image-3" class="thumbnail">
-								<img class="grayscale moduleimg" src="${ctx}/static/img/gallery/thumbs/3.jpg" alt="Sample Image 3">
-								<input type="checkbox" style="margin: 0 auto">
-							</li>
+							<c:forEach var="topmodule" items="${top}">
+								<li  class="thumbnail">
+									<img class="grayscale moduleimg" src="${ctx}/upload/${topmodule.picture}">
+									<input type="checkbox">${topmodule.name} 
+								</li>
+							</c:forEach>
 						</ul>
 					</div>
 					<p class="center">
-							<button class="btn btn-primary "><i class="icon-arrow-left icon-white"></i> 左移</button>
-							<button class="btn btn-primary "><i class="icon-arrow-right icon-white"></i> 右移</button>
+							<button class="btn btn-primary left"><i class="icon-arrow-left icon-white"></i> 左移</button>
+							<button class="btn btn-primary right"><i class="icon-arrow-right icon-white"></i> 右移</button>
 							<button class="btn btn-primary "> 保存设置</button>
 					</p>
 					<table class="table table-bordered table-striped table-condensed">
 							  <thead>
 								  <tr>
 									  <th>模块名称</th>
-									  <th>图片</th>
+									  <th style="width:200px">图片</th>
 									  <th>动作</th>                                          
 								  </tr>
 							  </thead>   
 							  <tbody>
-								<tr>
-									<td>Muhammad Usman</td>
-									<td class="center">2012/01/01</td>
+							  	<c:forEach items="${buttom}" var="buttomModule">
+							  		<tr>
+									<td>${buttomModule.name}</td>
+									<td class="center"><span><img src="${ctx}/upload/${buttomModule.picture}" style="width:100px;height:50px"></span></td>
 									<td class="center">
-										<button class="btn btn-primary "><i class="icon-arrow-up icon-white"></i></button>
-										<button class="btn btn-primary "><i class="icon-arrow-down icon-white"></i></button>
+										<button class="btn btn-primary up"><i class="icon-arrow-up icon-white"></i></button>
+										<button class="btn btn-primary down"><i class="icon-arrow-down icon-white"></i></button>
 									</td>                                       
 								</tr>
-								<tr>
-									<td>White Horse</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">
-										<button class="btn btn-primary "><i class="icon-arrow-up icon-white"></i></button>
-										<button class="btn btn-primary "><i class="icon-arrow-down icon-white"></i></button>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Sheikh Heera</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">
-										<button class="btn btn-primary "><i class="icon-arrow-up icon-white"></i></button>
-										<button class="btn btn-primary "><i class="icon-arrow-down icon-white"></i></button>
-									</td>                                        
-								</tr>
-								<tr>
-									<td>Saruar</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">
-										<button class="btn btn-primary "><i class="icon-arrow-up icon-white"></i></button>
-										<button class="btn btn-primary "><i class="icon-arrow-down icon-white"></i></button>
-									</td>                                       
-								</tr>                          
+							  	</c:forEach>
 							  </tbody>
 						 </table>
 				</div><!--/span-->
@@ -99,6 +71,37 @@
 					$(this).prev().removeClass('grayscale');
 					$(this).attr('checked',true);
 				})
+				
+				$('.up').click(function(){
+					var tr = $(this).parents('tr');
+					if(tr.prev()){
+						tr.prev().before(tr);
+					}
+				})
+				
+				$('.down').click(function(){
+					var tr = $(this).parents('tr');
+					if(tr.next()){
+						tr.next().after(tr);
+					}
+				})
+				
+				$('.left').click(function(){
+					var li = $('input:checked').parents('li');
+					if(li.prev()){
+						li.prev().before(li);
+					}
+				})
+				
+				
+				
+				$('.right').click(function(){
+					var li = $('input:checked').parents('li');
+					if(li.next()){
+						li.next().after(li);
+					}
+				})
+				
 			}
 		</script>      
 </body>

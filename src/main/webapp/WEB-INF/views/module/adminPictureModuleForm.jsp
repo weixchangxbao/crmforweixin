@@ -20,19 +20,19 @@
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">模块名称</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" name="name"  type="text" >
+								  <input class="input-xlarge focused" name="name"  type="text" value="${module.name}">
 								</div>
 							  </div>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">链接地址</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" name="url" type="text" >
+								  <input class="input-xlarge focused" name="url" type="text" value="${module.url}">
 								</div>
 							  </div>
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块位置</label>
 							  <div class="controls">
-								<input class="input-xlarge focuse" name="orderIndex" type="text">
+								<input class="input-xlarge focuse" name="orderIndex" type="text" value="${module.orderIndex}">
 								<span>（请填入数字，从1开始）</span>
 							  </div>
 							  </div>	
@@ -47,7 +47,10 @@
 								<label class="control-label" for="fileInput">图片预览</label>
 							  <div class="controls">
 							  <div>
-							  	<img id="picPreview" src="">
+							  	<img id="picPreview" src="
+							  	<c:if test="${module}!=null">
+							  	${ctx}/upload/${module.picture}
+							  	</c:if>">
 							  </div>
 							  </div>	
 							  </div>

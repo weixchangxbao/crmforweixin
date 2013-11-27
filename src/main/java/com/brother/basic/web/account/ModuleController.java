@@ -13,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brother.basic.entity.Module;
 import com.brother.basic.entity.ModuleType;
@@ -32,7 +34,9 @@ public class ModuleController {
 	private ModuleService moduleService;
 
 	@RequestMapping(value="/location")
-	public String showLocation(){
+	public String showLocation(Model model){
+		model.addAttribute("buttom",moduleService.listAllButtomModule());
+		model.addAttribute("top", moduleService.listAllTopModule());
 		return "/module/adminModuleLocation";
 	}
 	
@@ -51,6 +55,11 @@ public class ModuleController {
 		return "/module/adminFuncModuleList";
 	}
 	
+	@RequestMapping(value="picture")
+	public String showPictureList(){
+		return "/module/adminPictureModuleList";
+	}
+	
 	@RequestMapping(value="/pictupload")
 	public void pictupload(@RequestParam MultipartFile picture ,HttpServletRequest request,HttpServletResponse response){
 		String realPath = request.getSession().getServletContext().getRealPath("/upload");
@@ -63,6 +72,18 @@ public class ModuleController {
 		}
 	}
 	
+	@RequestMapping(value="delete/{id}")
+	public String delete(@PathVariable("id") Long id){
+		moduleService.delete(id);
+		return "redirect:/admin/module/picture";
+	}
+	
+	@RequestMapping(value="editPicture/{id}")
+	public String editPicture(@PathVariable("id") Long id ,RedirectAttributes redirectAttributes){
+		redirectAttributes.addFlashAttribute("module",moduleService.getModuleById(id));
+		return "redirect:/admin/module/pictform";
+	}
+	
 	@RequestMapping(value="createFunc")
 	public String createFunc(Module module,@RequestParam("moduleType") int moduleType){
 		module.setCreateBy(SecurityUtils.getSubject().getPrincipal().toString());
@@ -72,7 +93,7 @@ public class ModuleController {
 				module.setType(type);
 			}
 		}
-		moduleService.create(module);
+		moduleService.saveOrUpdate(module);
 		return "redirect:/admin/module/func";
 	}
 	
@@ -82,7 +103,7 @@ public class ModuleController {
 		module.setType(ModuleType.PICTURE);
 		module.setCreateBy(SecurityUtils.getSubject().getPrincipal().toString());
 		module.setCreateTime(new Date());
-		moduleService.create(module);
+		moduleService.saveOrUpdate(module);
 		return "redirect:/admin/module/pictform";
 	}
 	
@@ -97,4 +118,19 @@ public class ModuleController {
 		result.setsEcho(search.getsEcho());
 		return result;
 	}
+	
+	
+	@RequestMapping(value="listPictureModule")
+	public @ResponseBody SearchResult listPicture(SearchBean search){
+		Page<Module> pageUser = moduleService.listAllPictureModule(search);
+		SearchResult result = new SearchResult();
+		result.setAaData(pageUser.getContent());
+		long total = pageUser.getTotalElements();
+		result.setiTotalDisplayRecords(total);
+		result.setiTotalRecords(total);
+		result.setsEcho(search.getsEcho());
+		return result;
+	}
+	
+	
 }

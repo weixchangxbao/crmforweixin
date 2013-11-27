@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>功能模块管理</title>
+	<title>图片模块管理</title>
 </head>
 
 <body>
@@ -16,13 +16,9 @@
       <div class="row-fluid sortable">        
          <div class="box span12">
              <div class="box-header well" data-original-title>
-                 <h2><i class="icon-user"></i> 功能模块管理</h2>
+                 <h2><i class="icon-user"></i> 图片模块管理</h2>
                   <div class="box-icon">
-                  <a class="btn btn-info" href="${ctx}/admin/module/location">
-					<i class="icon-edit icon-white"></i>  
-						位置编辑                                           
-					</a>
-				<a class="btn btn-info" href="${ctx}/admin/module/funcform">
+				<a class="btn btn-info" href="${ctx}/admin/module/pictform">
 					<i class="icon-edit icon-white"></i>  
 						新增                                            
 					</a>
@@ -69,7 +65,7 @@
      		$('.usertable').dataTable( {
      			"bProcessing": true,
      			"bServerSide": true,
-     			"sAjaxSource": "${ctx}/admin/module/listFuncModule",
+     			"sAjaxSource": "${ctx}/admin/module/listPictureModule",
      			"sServerMethod":"POST",
      			"aoColumns": [
      							{"sName":"name","mData": "name","sWidth":"10%" },
@@ -81,11 +77,9 @@
      							//{"sName":"picture","mData": "picture","sClass":"center" },
      							{"sName":"url","mData": "url","sClass":"center" },
      							{"mData" : function(obj,type,val){
-     								return '<a class=\"btn btn-success\" href=\"${ctx}/admin/user/view/'+obj.id+'\">'+
-     										'<i class=\"icon-zoom-in icon-white\"></i>'+  
-     											'View'+                                            
-     										'</a>'+
-     										'<a class=\"btn btn-info\" href=\"${ctx}/admin/user/edit/'+obj.id+'\">'+
+     								return  '<a class=\"btn btn-primary up\"><i class=\"icon-arrow-up icon-white\"></i></a>'+
+											'<a class=\"btn btn-primary down\"><i class=\"icon-arrow-down icon-white\"></i></a>'+
+     										'<a class=\"btn btn-info\" href=\"${ctx}/admin/module/editPicture/'+obj.id+'\">'+
      										'<i class="icon-edit icon-white"></i>'+  
      											'Edit'+                                            
      										'</a>'+
@@ -106,7 +100,7 @@
      	
 
  		function doDelete(id){ 
- 			$("#deleteModal a.commit").attr("href","${ctx}/admin/user/delete/"+id);
+ 			$("#deleteModal a.commit").attr("href","${ctx}/admin/module/delete/"+id);
  			$("#deleteModal").modal('show');
  		}
      </script>
