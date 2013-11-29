@@ -31,6 +31,10 @@ public class ModuleService {
 		return moduleDao.findOne(id);
 	}
 	
+	public Iterable<Module> findAll(){
+		return moduleDao.findAll();
+	}
+	
 	public Page<Module> listAllFuncModule(SearchBean search){
 		Pageable pageable = new PageRequest(search.getiDisplayStart(), search.getiDisplayLength());
 		return moduleDao.findAllFuncModule(ModuleType.PICTURE, pageable);

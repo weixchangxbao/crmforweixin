@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -34,7 +35,7 @@ public class User extends IdEntity{
 
 	private String headportrait;
 
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.DATE)
 	private Date createTime;
 
 	private String password;
@@ -56,7 +57,7 @@ public class User extends IdEntity{
 	@JsonIgnore
 	private String plainPassword;
 
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.DATE)
 	private Date lastLoginTime;
 
 	private String lastLoginIP;
@@ -65,7 +66,7 @@ public class User extends IdEntity{
 	private String rolename;
 	
 
-	@ManyToMany(targetEntity=Role.class,fetch=FetchType.LAZY)
+	@ManyToMany(targetEntity=Role.class,fetch=FetchType.LAZY,cascade={CascadeType.REFRESH})
 	@JoinTable(name="BT_RoleRelUser",joinColumns={@JoinColumn(name="BT_User_ID")},
 	inverseJoinColumns={@JoinColumn(name="BT_Role_ID")})
 	private Collection<Role> roles= new ArrayList<Role>();
@@ -230,6 +231,5 @@ public class User extends IdEntity{
 	public void setRolename(String rolename) {
 		this.rolename = rolename;
 	}
-	
-	
+
 }

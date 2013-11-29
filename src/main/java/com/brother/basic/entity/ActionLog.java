@@ -15,7 +15,7 @@ public class ActionLog extends IdEntity{
 
 	private String actionName;
 
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.DATE)
 	private Date actionTime;
 
 	private String ip;

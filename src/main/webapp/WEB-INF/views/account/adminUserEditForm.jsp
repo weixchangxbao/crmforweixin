@@ -22,7 +22,7 @@
 					<div class="box-content">
 						<form class="form-horizontal" action="${ctx}/admin/user/update" method="post">
 							<fieldset>
-							  
+							  <input class="input-xlarge"   name="id" type="text" value="${user.id}" style="display:none">
 							  <div class="control-group">
 								<label class="control-label" for="username">用户名</label>
 								<div class="controls">
@@ -80,7 +80,7 @@
 			
 			</div>
 			
-					<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">

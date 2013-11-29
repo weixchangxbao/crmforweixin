@@ -19,6 +19,7 @@
 				</div>
 			</div>
 			<div class="control-group">
+				<input name="id" value="${user.id}" style="display:none">
 				<label for="plainPassword" class="control-label">密码:</label>
 				<div class="controls">
 					<input type="password" id="plainPassword" name="plainPassword" class="input-large" placeholder="...Leave it blank if no change"/>

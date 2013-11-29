@@ -6,16 +6,22 @@
     <div class="well nav-collapse sidebar-nav">
         <ul class="nav nav-tabs nav-stacked main-menu">
             <li class="nav-header hidden-tablet">基础管理</li>
+            <shiro:hasPermission name="user:view">
             <li><a class="ajax-link" href="${ctx}/admin/user"><i class="icon-home"></i><span class="hidden-tablet"> 用户管理</span></a></li>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="role:view">
             <li><a class="ajax-link" href="${ctx}/admin/role"><i class="icon-eye-open"></i><span class="hidden-tablet"> 角色管理</span></a></li>
-            <li><a class="ajax-link" href="${ctx}/admin/version/anroidForm"><i class="icon-edit"></i><span class="hidden-tablet"> 版本管理</span></a></li>
-            <li class="nav-header hidden-tablet">权限管理</li>
-            <li><a class="ajax-link" href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> 角色权限管理</span></a></li>
-            <li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> 菜单权限管理</span></a></li>
-            <li><a class="ajax-link" href="${ctx}/admin/module/location"><i class="icon-th"></i><span class="hidden-tablet"> 模块权限管理</span></a></li>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="android:view">
+            <li><a class="ajax-link" href="${ctx}/admin/version"><i class="icon-edit"></i><span class="hidden-tablet"> 版本管理</span></a></li>
+            </shiro:hasPermission>
             <li class="nav-header hidden-tablet">模块管理</li>
+            <shiro:hasPermission name="picture:view">
             <li><a class="ajax-link" href="${ctx}/admin/module/picture"><i class="icon-align-justify"></i><span class="hidden-tablet"> 图片模块管理</span></a></li>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="function:view">
             <li><a class="ajax-link" href="${ctx}/admin/module/func"><i class="icon-calendar"></i><span class="hidden-tablet"> 功能模块管理</span></a></li>
+            </shiro:hasPermission>
         </ul>
         <label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
     </div><!--/.well -->

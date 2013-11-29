@@ -38,7 +38,7 @@
 							  <div class="control-group">
 								<label class="control-label" for="password">密码</label>
 								<div class="controls">
-								  <input class="input-xlarge" id="password" name="password" type="password" value=''>
+								  <input class="input-xlarge" id="password" name="plainPassword" type="password" value=''>
 								</div>
 							  </div>
 							  <div class="control-group">

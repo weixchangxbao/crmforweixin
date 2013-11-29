@@ -17,10 +17,15 @@
 					<div class="box-content">
 						<form  action="${ctx}/admin/module/createFunc" method="post" class="form-horizontal">
 							<fieldset>
+							<div class="hiddenArea">
+							<input name="id" value="${module.id}" style="display:none">
+							<input name="createBy" value="${module.createBy}" style="display:none">
+							<input name="createTime" value="${module.createTime}" style="display:none">
+						</div>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">模块名称</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" name="name"  type="text" >
+								  <input class="input-xlarge focused" name="name"  type="text" value="${module.name}">
 								</div>
 							  </div>
 							   <div class="control-group">
@@ -35,20 +40,20 @@
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">链接地址</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" name="url" type="text" >
+								  <input class="input-xlarge focused" name="url" type="text" value="${module.url}">
 								</div>
 							  </div>
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块位置</label>
 							  <div class="controls">
-								<input class="input-xlarge focuse" name="orderIndex" type="text">
+								<input class="input-xlarge focuse" name="orderIndex" type="text" value="${module.orderIndex }">
 								<span>（请填入数字，从1开始）</span>
 							  </div>
 							  </div>	
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块图片</label>
 							  <div class="controls">
-							    <input name="picture" id="picture" type="text" style="display:none">
+							    <input name="picture" id="picture" type="text" style="display:none" value="${module.picture}">
 								<input data-no-uniform="true" disabled="disabled" type="file" name="file_upload" id="file_upload" />
 							  </div>
 							  </div>	
@@ -56,7 +61,10 @@
 								<label class="control-label" for="fileInput">图片预览</label>
 							  <div class="controls">
 							  <div>
-							  	<img id="picPreview" src="">
+							  	<img id="picPreview" src="
+							  	<c:if test="${module}!=null">
+							  	${ctx}/upload/${module.picture}
+							  	</c:if>">
 							  </div>
 							  </div>	
 							  </div>

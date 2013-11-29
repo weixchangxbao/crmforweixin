@@ -5,7 +5,7 @@
 
 <html>
 <head>
-	<title>图片模块管理</title>
+	<title>功能模块管理</title>
 </head>
 
 <body>
@@ -16,49 +16,26 @@
       <div class="row-fluid sortable">        
          <div class="box span12">
              <div class="box-header well" data-original-title>
-                 <h2><i class="icon-user"></i> 图片模块管理</h2>
+                 <h2><i class="icon-user"></i> 功能模块管理</h2>
                   <div class="box-icon">
-				<a class="btn btn-info" href="${ctx}/admin/module/pictform">
+				<a class="btn btn-info" href="${ctx}/admin/version/anroidForm">
 					<i class="icon-edit icon-white"></i>  
 						新增                                            
 					</a>
              </div>
              </div>
              <div class="box-content">
-                 <table class="table table-striped table-bordered bootstrap-datatable datatable">
-						  <thead>
-							  <tr>
-								  <th>产品名称</th>
-								  <th>版本</th>
-								  <th>路径</th>
-								  <th>创建人</th>
-								  <th>描述</th>
-							  </tr>
-						  </thead>   
-						  <tbody>
-							<tr>
-								<td>David R</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">Active</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										View                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										Edit                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										Delete
-									</a>
-								</td>
-							</tr>
-					</tbody>
+                 <table class="table table-striped table-bordered bootstrap-datatable usertable">
+                   <thead>
+                       <tr>
+                           <th>应用名称</th>
+                           <th>版本</th>
+                           <th>位置</th>
+                           <th>描述</th>
+                           <th>创建人</th>
+                           <th>创建时间</th>
+                       </tr>
+                   </thead>   
                </table>            
              </div>
          </div><!--/span-->
@@ -69,7 +46,19 @@
      <script type="text/javascript">
      	function doBodyInit(){
      		
-     		$('.datatable').dataTable( {
+     		$('.usertable').dataTable( {
+     			"bProcessing": true,
+     			"bServerSide": true,
+     			"sAjaxSource": "${ctx}/admin/version",
+     			"sServerMethod":"POST",
+     			"aoColumns": [
+     							{"sName":"name","mData": "name","sWidth":"10%" },
+     							{"sName":"version","mData": "version","sClass":"center" },
+     							{"sName":"path","mData": "path" ,"sClass":"center"},
+     							{"sName":"description","mData": "description"}, 
+     							{"mData":"createBy"},
+     							{"mData":"createTime"}
+     						],
      			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
      			"sPaginationType": "bootstrap",
      			"oLanguage": {
@@ -78,6 +67,7 @@
      		}
      		);
      	}
+
      </script>
 </body>
 

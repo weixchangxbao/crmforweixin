@@ -95,4 +95,31 @@ public class UserAdminController {
 		model.addAttribute("user",accountService.getUser(id));
 		return "/account/adminUserEditForm";
 	}
+	
+	@RequestMapping(value="update")
+	public String updateUser(User user,@RequestParam String roleids){
+		String rolenames = "";
+		User oUser = accountService.getUser(user.getId());
+		oUser.setUsername(user.getUsername());
+		oUser.setRealname(user.getRealname());
+		oUser.setExpiredDate(user.getExpiredDate());
+		if(roleids != null && !roleids.trim().equals("")){
+			String[]ids = roleids.split(",");
+			List<Role> roles = new ArrayList<Role>();
+			for(int i=0;i<ids.length;i++){
+				Role role  = roleService.getRoleById(Long.parseLong(ids[i]));
+				roles.add(role);
+				if(i==0){
+					rolenames = role.getName();
+				}else{
+					rolenames = rolenames + "," +role.getName();
+				}
+			}
+			oUser.setRoles(roles);
+			oUser.setRolename(rolenames);
+		}
+		
+		accountService.updateUser(oUser);
+		return "/account/adminUserList";
+	}
 }

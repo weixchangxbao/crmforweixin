@@ -8,8 +8,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="BT_Version")
-public class Version extends IdEntity{
+@Table(name="BT_Version_Andriod")
+public class AndroidVersion extends IdEntity{
 	private String name;
 	private String version;
 	private String path;

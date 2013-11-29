@@ -53,9 +53,6 @@ public class AccountService {
 	}
 
 	public void updateUser(User user) {
-		if (StringUtils.isNotBlank(user.getPlainPassword())) {
-			entryptPassword(user);
-		}
 		userDao.save(user);
 	}
 
@@ -79,7 +76,7 @@ public class AccountService {
 	 */
 	private String getCurrentUserName() {
 		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
-		return user.loginName;
+		return user.username;
 	}
 
 	/**

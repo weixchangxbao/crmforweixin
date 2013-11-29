@@ -14,6 +14,7 @@
 	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
 	<bean id="shiroDbRealm" class="com.brother.basic.service.account.ShiroDbRealm">
 		<property name="accountService" ref="accountService"/>
+		<property name="permissionService" ref="permissionService"/>
 	</bean>
 	
 	<!-- Shiro Filter -->
@@ -30,13 +31,10 @@
 			<value>
 				/login = authc
 				/logout = logout
-				/static/** = anon
-				/upload/** = anon
-				/api/** = anon
-				/register/** = anon
-				/admin/** = anon
-				/images/** = anon
-				/** = user
+				/admin/user/**=perms[user:view]
+				/admin/role/**=perms[role:view]
+				/admin/**=perms
+				/** = anon
 			</value>
 		</property>
 	</bean>

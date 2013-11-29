@@ -42,7 +42,7 @@ public class ModuleController {
 	
 	@RequestMapping(value="/pictform")
 	public String showPictForm(){
-		return "/module/adminPictrueModuleForm";
+		return "/module/adminPictureModuleForm";
 	}
 	
 	@RequestMapping(value="/funcform")

@@ -66,6 +66,51 @@
      </div>
    
      
+     <div class="modal fade" id="roleUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">编辑角色</h4>
+		      </div>
+		        <form action="${ctx}/admin/role/update" method="post" class="form-horizontal">
+		      <div class="modal-body">
+		        	<div class="control-group">
+					<label class="control-label">角色名</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" name="id" style="display:none" >
+								  <input class="input-xlarge focused" name="name" type="text" >
+					</div>		</div>
+					
+		      </div>
+	  <div class="modal-footer">
+		 	 <button  id="createBtn" type="submit" class="btn btn-primary">保存</button>
+        	<button  type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+      </form>
+     </div>
+     </div>
+     </div>
+     
+     
+ <div class="modal fade" id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">提示</h4>
+      </div>
+      <div class="modal-body">
+        <p>是否确定删除信息！</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn commit">提交</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
      <script type="text/javascript">
      	function doBodyInit(){
      		$('.usertable').dataTable( {
@@ -78,19 +123,23 @@
      							{"sName":"createBy","mData": "createBy","sClass":"center" },
      							{"sName":"createTime","mData": "createTime" ,"sClass":"center"},
      							{"mData" : function(obj,type,val){
-     								return '<a class=\"btn btn-success\" href=\"#\">'+
-     										'<i class=\"icon-zoom-in icon-white\"></i>'+  
-     											'View'+                                            
-     										'</a>'+
-     										'<a class=\"btn btn-info\" href=\"#\">'+
+     								return '<a class=\"btn btn-info\" onclick=\"updateRole('+obj.id+')\">'+
      										'<i class="icon-edit icon-white"></i>'+  
-     											'Edit'+                                            
+     											'编辑'+                                            
      										'</a>'+
-     										'<a class=\"btn btn-danger\" href=\"#\">'+
+     										'<a class=\"btn btn-danger\" onclick=\"deleteRole('+obj.id+')\">'+
      										'<i class=\"icon-trash icon-white\"></i>'+ 
-     											'Delete'+
+     											'删除'+
+     										'</a>'+
+     										'<a class=\"btn btn-warning\" href=\"${ctx}/admin/role/permission/'+obj.id+'\">'+
+     										'<i class=\"icon-trash icon-white\"></i>'+ 
+     											'功能权限'+
+     										'</a>'+
+     										'<a class=\"btn btn-success\" href=\"${ctx}/admin/role/modulePermission/'+obj.id+'\">'+
+     										'<i class=\"icon-zoom-in icon-white\"></i>'+  
+     											'模块权限'+                                            
      										'</a>';
-     							} ,"sWidth":'30%'}
+     							} ,"sWidth":'40%'}
      						],
      			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
      			"sPaginationType": "bootstrap",
@@ -100,6 +149,16 @@
      		}
      		);
      	}
+     	
+ 		function updateRole(id){
+ 			$('#roleUpdate input[name="id"]').val(id);
+ 			$('#roleUpdate').modal('show');
+ 		}
+ 		
+ 		function deleteRole(id){
+			$("#deleteModal a.commit").attr("href","${ctx}/admin/role/delete/"+id);
+			$("#deleteModal").modal('show');
+ 		}
      </script>
 </body>
 

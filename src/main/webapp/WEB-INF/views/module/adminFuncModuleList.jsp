@@ -81,11 +81,7 @@
      							//{"sName":"picture","mData": "picture","sClass":"center" },
      							{"sName":"url","mData": "url","sClass":"center" },
      							{"mData" : function(obj,type,val){
-     								return '<a class=\"btn btn-success\" href=\"${ctx}/admin/user/view/'+obj.id+'\">'+
-     										'<i class=\"icon-zoom-in icon-white\"></i>'+  
-     											'View'+                                            
-     										'</a>'+
-     										'<a class=\"btn btn-info\" href=\"${ctx}/admin/user/edit/'+obj.id+'\">'+
+     								return '<a class=\"btn btn-info\" href=\"${ctx}/admin/user/edit/'+obj.id+'\">'+
      										'<i class="icon-edit icon-white"></i>'+  
      											'Edit'+                                            
      										'</a>'+

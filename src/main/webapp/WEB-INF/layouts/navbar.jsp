@@ -38,9 +38,9 @@
                  <span class="caret"></span>
              </a>
              <ul class="dropdown-menu">
-                 <li><a href="#">Profile</a></li>
+                 <li><a href="${ctx}/admin/profile">Profile</a></li>
                  <li class="divider"></li>
-                 <li><a href="login.html">Logout</a></li>
+                 <li><a href="${ctx}/logout">Logout</a></li>
              </ul>
          </div>
          <!-- user dropdown ends -->

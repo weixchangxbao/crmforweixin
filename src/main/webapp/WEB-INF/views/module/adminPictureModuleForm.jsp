@@ -16,6 +16,11 @@
 					</div>
 					<div class="box-content">
 						<form  action="${ctx}/admin/module/create" method="post" class="form-horizontal">
+						<div class="hiddenArea">
+							<input name="id" value="${module.id}" style="display:none">
+							<input name="createBy" value="${module.createBy}" style="display:none">
+							<input name="createTime" value="${module.createTime}" style="display:none">
+						</div>
 							<fieldset>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">模块名称</label>
@@ -39,7 +44,7 @@
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块图片</label>
 							  <div class="controls">
-							    <input name="picture" id="picture" type="text" style="display:none">
+							    <input name="picture" id="picture" type="text" style="display:none" value="${module.picture}">
 								<input data-no-uniform="true" disabled="disabled" type="file" name="file_upload" id="file_upload" />
 							  </div>
 							  </div>	
