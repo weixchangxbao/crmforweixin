@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="../static/jquery-mobile/jquery.mobile-1.3.2.min.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/jquery-plugs/idangerous.swiper.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/styles/default.css" type="text/css" rel="stylesheet"/>
+	<style type="text/css">
+		.btn-custom .ui-btn{
+			border-bottom:1px #6a6a6a dashed!important;
+			border-top:1px #6a6a6a dashed!important;
+			box-shadow: none!important; 
+			-moz-box-shadow: none!important;
+			margin:0px!important;
+			margin-top:3px!important;
+			margin-bottom:3px!important;
+			background-color: #f4f4f4!important;
+			line-height: 90px;
+		}
+	</style>
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="header" data-position="fixed">
+			<img class="logo" src="../static/images/app/logo.png"/>
+			<div class="header-bg">大银电子商务</div>
+			<div  style="position:absolute;right: 20px;top:2px;">
+				<a href="#" data-role="button" data-iconpos="notext" data-iconshadow="false" data-icon="refresh"></a>
+			</div>
+		</div>
+		<div data-role="content" class="btn-custom">
+			<div class="ui-grid-solo">
+				 <div class="ui-block-a">
+				 	<img alt="" src="../static/images/app/about-top.gif" style="margin-bottom:-3px;padding:0px;width:100%;">
+				 </div>
+			</div>
+		 	<a href="#intr" data-transition="slide" data-role="button" data-corners="false" data-icon="arrow-r" data-iconpos="right">
+		 		<div class="ui-grid-b">
+			 		 <div class="ui-block-a">
+			 		 	<div style="height:85px; min-height:85px; width:90px;border:0px solid #a6a6a6;">
+			 		 		<img src="../static/images/app/21.png" style="width:100%;"/>
+			 		 	</div>
+			 		 </div>
+			 		 <div class="ui-block-b" style="text-align: left;width:50%">
+			 		 	<h2 style="line-height: 25px;">公司简介</h2>
+			 		 	<div style="font-size: 12px;color: #aaa;line-height: 30px;word-wrap:break-word; white-space:normal;overflow:hidden;">
+			 		 		上海大银电子商务有限公司是大银集团属下子公司...
+			 		 	</div>
+			 		 </div>
+		 		</div>
+		 	</a>
+			<a href="#csr" data-transition="slide" data-role="button" data-corners="false" data-icon="arrow-r" data-iconpos="right">
+		 		<div class="ui-grid-b">
+			 		 <div class="ui-block-a">
+			 		 	<div style="height:85px; min-height:85px; width:90px;border:0px solid #a6a6a6;">
+			 		 		<img src="../static/images/app/59.png" style="width:100%;"/>
+			 		 	</div>
+			 		 </div>
+			 		 <div class="ui-block-b" style="text-align: left;width:50%">
+			 		 	<h2 style="line-height: 25px;">大银创始人</h2>
+			 		 	<div style="font-size: 12px;color: #aaa;line-height: 30px;word-wrap:break-word; white-space:normal;overflow:hidden;text-overflow: ellipsis;">
+			 		 		陈冰女士，是大银电子商务有限公司创始人...
+			 		 	</div>
+			 		 </div>
+		 		</div>
+		 	</a>
+			<a href="#zz" data-transition="slide" data-role="button" data-role="button" data-corners="false" data-icon="arrow-r" data-iconpos="right">
+		 		<div class="ui-grid-b">
+			 		 <div class="ui-block-a">
+			 		 	<div style="height:85px; min-height:85px; width:90px;border:0px solid #a6a6a6;">
+			 		 		<img src="../static/images/app/29.png" style="width:100%;"/>
+			 		 	</div>
+			 		 </div>
+			 		 <div class="ui-block-b" style="text-align: left;width:50%">
+			 		 	<h2 style="line-height: 25px;">大银资质</h2>
+			 		 	<div style="font-size: 12px;color: #aaa;line-height: 30px;word-wrap:break-word; white-space:normal;overflow:hidden;text-overflow: ellipsis;">
+			 		 		在技术研发、创新、电商模式等方面获得多项专利...
+			 		 	</div>
+			 		 </div>
+		 		</div>
+		 	</a>
+			<a href="#wh" data-transition="slide" data-role="button" data-role="button" data-corners="false" data-icon="arrow-r" data-iconpos="right">
+		 		<div class="ui-grid-b">
+			 		 <div class="ui-block-a">
+			 		 	<div style="height:85px; min-height:85px; width:90px;border:0px solid #a6a6a6;">
+			 		 		<img src="../static/images/app/22.png" style="width:100%;"/>
+			 		 	</div>
+			 		 </div>
+			 		 <div class="ui-block-b" style="text-align: left;width:50%">
+			 		 	<h2 style="line-height: 25px;">文化理念</h2>
+			 		 	<div style="font-size: 12px;color: #aaa;line-height: 30px;word-wrap:break-word; white-space:normal;overflow:hidden;">
+			 		 		文化：大银财富&nbsp;共享未来&nbsp;信息共享&nbsp资源共享&nbsp;财富共享...
+			 		 	</div>
+			 		 </div>
+		 		</div>
+		 	</a>
+		</div>
+		
+		<div data-role="footer" data-position="fixed" class="nav-custom">
+			<div data-role="navbar" data-iconpos="left">
+			    <ul>
+			        <li><a class="foot-bar" data-iconshadow="false" data-icon="myhome" href="index-new.html"  data-transition="slide"><span style="color:#e95121;font-size: 15px;">首页</span></a></li>
+			        <li><a class="foot-bar" data-icon="more" href="msb.html" data-transition="slide"><span style="color:#e95121;font-size: 15px">更多</span></a></li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="intr">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">公司简介</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<img src="../static/images/app/about-js.gif" width="100%"/>
+			<div style="text-indent: 2em;margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<p style="margin:10px;">
+				上海大银电子商务有限公司是大银集团属下子公司，中国著名电子商务运营服务商，国家商务部电子商务产业研究基地企业。公司成立于2004年，总部坐落于世界500强企业的云基地，国家一级高科技园区——上海张江集电港科技领袖之都。从成立之初，大银一贯坚持“商为本，客为尊。”的经营理念，全心致力于电商及行业信息化科技创新及服务模式的创新。大银电子商务拥有强大的技术研发团队和专业的运营团队，先后为全国各省市搭建城市信息化“星光工程”创新平台、数字传播信息系统、科技馆数字科普系统等高新项目，并与重点高校组建数据库安全研究中心，协同完成对于数据库和数据仓库安全体系的研究和优化。旗下通过自身技术团队独立研发的多维云商业服务系统（MSB）获得了多项国家发明专利和软著，为电子商务发展提供了强有力的理论依据并广泛应用于在线交易、手机商城、移动支付、数据治理、商业智能等领域，真正实现“让大银成为消费者的财富银行”的企业愿景。
+				<p>
+			</div>
+			<div style="text-indent: 2em;margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<p style="margin:10px;">
+				大银通过近十年在电商和信息化领域的专注和诚信积累，先后被工信部、科技部评为示范性企业，被农业部列为首家战略合作企业，被商务部列为电子商务产业研究会及产业研究基地，旗下支付和信用安全体系被交通银行、平安银行等国有、商业银行作为首批战略合作伙伴。大银在大力推进商务电子化和消费一体化的同时建立了完善的运营服务体系及团队人才培养机制，不断提升客户体验，被客户誉为国内诚信电商企业。“云层之上永无雨，创新之下恒大银”将引领大银人向中国电子商务新领域迈进。
+				</p>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="csr">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">大银创始人</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<img src="../static/images/app/about-csr.gif" style="width:100%;height:227px;"/>
+		　　　<div style="text-indent: 2em;margin:15px;margin-top:0px;background: #f4f4f4;border:1px solid #ccc">
+				<p style="margin:10px;">
+				陈冰女士，是大银电子商务有限公司创始人，并任大银电子商务董事局主席兼首席执行官。在创业道路上，陈冰一直怀着坚定的信念，脚踏实地的规划宏大的事业蓝图。在他的带领下，大银必将开拓电子商务行业新纪元。
+				</p>
+			</div>
+			<div style="margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<ul>
+					<li>2004年：上海市科技创业领军人物</li>
+					<li>2006年：五一时代英模勋章奖</li>
+					<li>2007年：中国十大创业领袖 中国女性经济年度创新人物</li>
+					<li>2008年：中国农业信息化十大年度人物</li>
+					<li>2009年：中国信息化年度贡献奖</li>
+					<li>2010年：商务部中国国际经济学会学术委员</li>
+					<li>2011年：中国女性经济年度创新人物</li>
+					<li>2012年：商务部中国电子商务产业研究会副主任</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="zz">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">大银资质</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<div style="margin:15px;background: #f4f4f4;border:1px solid #ccc;padding:10px;">
+				<img src="../static/images/app/about-zz1.gif" style="width:100%;"/>
+			</div>
+			<div style="margin:15px;background: #f4f4f4;border:1px solid #ccc;padding:10px;">
+				<img src="../static/images/app/about-zz2.gif" style="width:100%;"/>
+			</div>
+			<div style="margin:15px;background: #f4f4f4;border:1px solid #ccc;padding:10px;">
+				<img src="../static/images/app/about-zz3.gif" style="width:100%;"/>
+			</div>
+			<div style="margin:15px;background: #f4f4f4;border:1px solid #ccc;padding:10px;">
+				<img src="../static/images/app/about-zz4.gif" style="width:100%;"/>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="wh">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">大银资质</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<div style="margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<ul>
+					<li>文化：大银财富 共享未来 信息共享 资源共享 财富共享</li>
+					<li>使命：更好的消费 更多的财富</li>
+					<li>愿景：让DYCF 成为消费者的财富银行</li>
+					<li>价值观：以客户为中心 创新增值服务</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../static/jquery-mobile/jquery.mobile-1.3.2.min .js"></script>
+	<script type="text/javascript" src="../static/jquery-plugs/idangerous.swiper-2.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var mySwiper = new Swiper('.swiper-container',{
+			    pagination: '.pagination',
+			    loop:true,
+			    grabCursor: true,
+			    paginationClickable: true
+			});
+		});
+	</script>
+</body>
+</html>

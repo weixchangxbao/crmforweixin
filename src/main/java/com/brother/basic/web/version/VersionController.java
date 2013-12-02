@@ -27,6 +27,7 @@ import com.brother.basic.entity.AndroidVersion;
 import com.brother.basic.entity.User;
 import com.brother.basic.search.SearchBean;
 import com.brother.basic.search.SearchResult;
+import com.brother.basic.service.log.ActionLogService;
 import com.brother.basic.service.version.AndroidVersionService;
 
 @Controller
@@ -34,12 +35,16 @@ import com.brother.basic.service.version.AndroidVersionService;
 public class VersionController {
 	
 	private static final String APP_NAME = "DaYin.app";
-	private static final String APP_PATH = "/app";
+	private static final String APP_PATH = "/apk";
+	
 	
 	@Autowired
 	private AndroidVersionService androidVersionService;
 	
-	@RequestMapping(value="anroidForm")
+	@Autowired
+	private ActionLogService actionLogService;
+	
+	@RequestMapping(value="/androidForm")
 	public String showAndroidForm(){
 		return "/version/adminAndroidVersionForm";
 	}
@@ -67,7 +72,7 @@ public class VersionController {
 		String  v = version.getVersion();
 		String filename = app.getOriginalFilename();
 		String sourcePath = rootPath+File.separator+v+File.separator+filename;
-		version.setPath(sourcePath);
+		version.setPath(APP_PATH+File.separator+v+File.separator+filename);
 		String targetPath = rootPath+File.separator+VersionController.APP_NAME;
 		try {
 			FileUtils.copyInputStreamToFile(app.getInputStream(), new File(sourcePath));
@@ -76,6 +81,7 @@ public class VersionController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		actionLogService.addLog("新增版本", version.toString(), request.getRemoteAddr());
 		androidVersionService.update(version);
 		return "redirect:/admin/version";
 	}

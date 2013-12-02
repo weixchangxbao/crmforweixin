@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <html>
 <head>
-	<title>功能模块管理</title>
+	<title>版本管理</title>
 </head>
 
 <body>
@@ -16,12 +16,14 @@
       <div class="row-fluid sortable">        
          <div class="box span12">
              <div class="box-header well" data-original-title>
-                 <h2><i class="icon-user"></i> 功能模块管理</h2>
+                 <h2><i class="icon-user"></i> 版本管理</h2>
                   <div class="box-icon">
-				<a class="btn btn-info" href="${ctx}/admin/version/anroidForm">
+                  <shiro:hasPermission name="andriod:create">
+				<a class="btn btn-info" href="${ctx}/admin/version/androidForm">
 					<i class="icon-edit icon-white"></i>  
 						新增                                            
 					</a>
+					</shiro:hasPermission>
              </div>
              </div>
              <div class="box-content">

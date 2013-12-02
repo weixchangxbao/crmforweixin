@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link href="../static/jquery-mobile/jquery.mobile-1.3.2.min.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/styles/default.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/styles/custom.css" type="text/css" rel="stylesheet"/>
+	<!-- <link href="../static/styles/navbar.css" type="text/css" rel="stylesheet"/> -->
+	<style type="text/css">
+		.btn-custom .wrap{
+			background-color:#fff;
+			border:1px solid #aaa;margin:10px;
+			margin-top:20px;
+			position: relative;
+		}
+		.btn-custom .wrap a{
+			text-decoration: none;
+		}
+		.btn-custom .wrap .img{
+			 background-color:#fff;
+			 position: relative;
+		}
+		.btn-custom .wrap .img img.s-logo{
+			width:60px;
+			height:30px;
+			position: absolute;
+			z-index: 1;top:-10px;left:10px;
+		}
+		.btn-custom .wrap .img img{
+			 width:100%;height:150px;
+			 margin-bottom:-4px;
+		}
+		.btn-custom .wrap .img div{
+			position:absolute;
+			left:20px;
+			bottom:0px;
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;  
+   			border-bottom:10px solid #f4f4f4;
+		}
+		.btn-custom .wrap .title a{
+			text-decoration: none;
+		}
+		.btn-custom .wrap .title h3{
+			font-weight:bolder;
+			font-size: 18px;
+			color:#4A1E30;
+			background-color:#f4f4f4;
+			height:40px;line-height: 40px;padding-left:20px;
+			/* border:10px solid #a64c55; */
+			border-top: none;
+			border-bottom: none;
+			border-right: none;
+		}
+		.btn-custom .wrap .title div{
+			text-shadow:none;
+			padding:0px 15px;
+			font-size:15px;
+			height:30px; 
+			line-height: 30px;
+			background-color:#eee;
+			border:10px solid #ef8a2e;
+			border-top: 1px solid #e1e1e1;
+			border-bottom: none;
+			border-right: none;
+			overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+			color:#B28998;
+		}
+		.btn-custom .wrap .title span{
+			color:#8F1D28;
+			padding-left:15px;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">韩国城</div>
+			<div  style="position:absolute;right: 20px;top:2px;display: none;">
+				<a href="#" data-role="button" data-iconpos="notext" data-icon="myrefresh"></a>
+			</div>
+		</div>
+		<div data-role="content" class="btn-custom">
+			<div class="wrap">
+				<a href="#xmjj" data-transition="fade">
+			 		<div class="img">
+			 			<img class="s-logo" src="../static/images/app/logo-small.png"/>
+			 			<img src="../static/images/app/hgc1.gif"/>
+			 			<div></div>
+			 		</div>
+			 		<div  class="title">
+			 			<h3>项目简介<span>Project Profile</span></h3>
+				 		<!-- <div>
+				 			“韩国城” 项目是大银云商平台将合作的韩国厂商的商品直接推送给商家和消费者
+				 		</div> -->
+			 		</div>
+		 		</a>
+		 	</div>
+		 	<div class="wrap">
+		 		<a href="#gfsy" data-transition="fade">
+		 			<div class="img">
+			 			<img class="s-logo" src="../static/images/app/logo-small.png"/>
+			 			<img src="../static/images/app/hgc.gif"/>
+			 			<div></div>
+			 		</div>
+			 		<div  class="title">
+				 		<h3>各方受益分析<span>Benefit Analysis</span></h3>
+				 		<!-- <div>
+				 			有更多质优价廉的韩国商品可供选择；获得更多积分返利，享受更多优质服务
+				 		</div> -->
+			 		</div>
+		 		</a>
+		 	</div>
+		 	<div class="wrap">
+		 		<a href="#xmcg" data-transition="fade">
+			 		<div class="img">
+			 			<img class="s-logo" src="../static/images/app/logo-small.png"/>
+			 			<img src="../static/images/app/gfsy.gif"/>
+			 			<div></div>
+			 		</div>
+			 		<div  class="title">
+				 		<h3>项目现阶段成果<span>Results Of Project</span></h3>
+				 		<!-- <div>
+				 			2013年7月21日，韩国一万多家企业联合组成“韩国城”项目组在内的知
+				 		</div> -->
+			 		</div>
+		 		</a>
+		 	</div>
+		 </div>
+		 <div data-role="footer" data-position="fixed" class="nav-custom">
+			<div data-role="navbar" data-iconpos="left">
+			    <ul>
+			        <li><a data-role="button" data-icon="myhome"  data-theme="navbar"  href="index.html" rel="external">
+			        	<span style="color:#eaeaea;font-size: 15px;">首页</span>
+			        </a></li>
+			        <li><a data-role="button" data-icon="mymore"  data-theme="navbar"  href="msb.html" rel="external">
+			        	<span style="color:#eaeaea;font-size: 15px">更多</span>
+			        </a></li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="xmjj">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">项目简介</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<div style="text-indent: 2em;margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<p style="margin:10px;">
+“韩国城” 项目是大银云商平台将合作的韩国厂商的商品直接推送给商家和消费者，并通过利益驱动促成再次消费、形成双向循环的良性市场业态环境，并覆盖至全国各地的重要项目。最终让商家和消费者借助大银韩国城平台在交易和消费过程中受益，使“韩国城”进入到从线上走到线下，再由线下不断提升知名度后，吸引消费者回到线上消费受益的循环模式，此举将提升中韩双边贸易量，促进国民经济稳步发展。
+				<p>
+			</div>
+			<div style="padding:0 15px;">
+				<img src="../static/images/app/hgc.gif" style="width:100%;"/>
+			</div>
+			
+			<div style="margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<ul style="margin:15px;margin-left:30px">
+					<li>云平台支持500万用户集中交易</li>
+					<li>在多维度云技术平台运营技术方面获得多项专利</li>
+					<li>全方位门户网站和移动终端订购体系</li>
+					<li>面向用户的商品及促销信息定向推送机制</li>
+					<li>IPOS支付体系和财务管理功能</li>
+					<li>海量数据分布式存储及商业数据智能分析技术</li>
+					<li>稳健高效的客户主数据协同更新、提取机制</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="gfsy">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">各方受益分析</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+ 			<div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+                <h4>消费者</h4>
+                <ul data-role="listview">
+                    <li>有更多质优价廉的韩国商品可供选择</li>
+                    <li>获得更多积分返利，享受更多优质服务</li>
+                    <li>提高个人社交形象，享受韩式优质生活方式</li>
+                </ul>
+            </div> 
+            <div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+                <h4>联盟商户</h4>
+                <ul data-role="listview">
+                    <li>有机会获得较低的进货价格</li>
+                    <li>为自身业务的拓展与利益的增值提供有效途径</li>
+                    <li>吸引更多商户的消费者光顾</li>
+                    <li>在宣传韩国品牌的同时提升商户品牌价值</li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+                <h4>联盟商户</h4>
+                <ul data-role="listview">
+                    <li>有机会获得较低的进货价格</li>
+                    <li>为自身业务的拓展与利益的增值提供有效途径</li>
+                    <li>吸引更多商户的消费者光顾</li>
+                    <li>在宣传韩国品牌的同时提升商户品牌价值</li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+                <h4>韩国合作伙伴</h4>
+                <ul data-role="listview">
+                    <li>借助大银平台逐步扩大业务范围</li>
+                    <li>将韩国商品进入中国市场，扩宽产品销售渠道和市场</li>
+                    <li>与大银深度合作，从MSB模式中获益</li>
+                </ul>
+            </div>
+		</div>
+	</div>
+	<div data-role="page" id="xmcg">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">项目现阶段成果</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<div style="padding:15px 15px 0 15px;">
+				<img src="../static/images/app/xmcg.gif" style="width:100%"/>
+			</div>
+			<div style="text-indent: 2em;margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<p style="margin:10px;">
+					2013年7月21日，韩国一万多家企业联合组成“韩国城”项目组在内的知名韩国企业历经半年时间对中国市场及电商公司进行考察和调研之后，最终决定进驻大银云商平台，双方成为永久合作伙伴。首批绿色环保，质优价廉的产品已陆续上架，种类涵盖户外运动、妇婴用品、化妆品、保健品等。
+				<p>
+				<p style="margin:10px;">
+					目前，“韩国城”项目“商业诚信体系”已获得了商务部、浦东商委、张江高科技园区管委会、浦东区电子商务行业协会等领导的高度认可。
+				<p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../static/jquery-mobile/jquery.mobile-1.3.2.min .js"></script>
+</body>
+</html>

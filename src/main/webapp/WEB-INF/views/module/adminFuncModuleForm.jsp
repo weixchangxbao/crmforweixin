@@ -17,32 +17,35 @@
 					<div class="box-content">
 						<form  action="${ctx}/admin/module/createFunc" method="post" class="form-horizontal">
 							<fieldset>
-							<div class="hiddenArea">
-							<input name="id" value="${module.id}" style="display:none">
-							<input name="createBy" value="${module.createBy}" style="display:none">
-							<input name="createTime" value="${module.createTime}" style="display:none">
-						</div>
+							<c:if test="${module != null }">
+								<div class="hiddenArea">
+								<input name="id" value="${module.id}" style="display:none">
+								</div>
+							</c:if>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">模块名称</label>
 								<div class="controls">
 								  <input class="input-xlarge focused" name="name"  type="text" value="${module.name}">
 								</div>
 							  </div>
+							  <c:if test="${module==null}">							  
 							   <div class="control-group">
 								<label class="control-label" for="selectError3">模块位置</label>
 								<div class="controls">
 								  <select id="type" name="moduleType">
-									<option value="1">Top</option>
-									<option value="2">Buttom</option>
+									<option value="0">Top</option>
+									<option value="1">Buttom</option>
 								  </select>
 								</div>
 							  </div>
+							</c:if>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">链接地址</label>
 								<div class="controls">
 								  <input class="input-xlarge focused" name="url" type="text" value="${module.url}">
 								</div>
 							  </div>
+							    <c:if test="${module==null}">
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块位置</label>
 							  <div class="controls">
@@ -50,6 +53,7 @@
 								<span>（请填入数字，从1开始）</span>
 							  </div>
 							  </div>	
+							  </c:if>
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块图片</label>
 							  <div class="controls">
@@ -62,19 +66,18 @@
 							  <div class="controls">
 							  <div>
 							  	<img id="picPreview" src="
-							  	<c:if test="${module}!=null">
-							  	${ctx}/upload/${module.picture}
+							  	<c:if test="${module!=null}">
+							  		${ctx}/upload/${module.picture}
 							  	</c:if>">
 							  </div>
 							  </div>	
 							  </div>
 							  <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Save changes</button>
-								<button class="btn">Cancel</button>
+								<button class="btn" onclick="history.back()">Cancel</button>
 							  </div>
 							</fieldset>
 						  </form>
-					
 					</div>
 				</div><!--/span-->
 			
@@ -82,6 +85,30 @@
 			
 		<script type="text/javascript">
 			function doBodyInit(){
+				
+				$('form').validate({
+					rules:{
+						name:"required",
+						url:"required",
+						type:"required",
+						orderIndex:{
+							required:true,
+							digits:true,
+							remote:{
+								type:"POST",
+								url:"/admin/module/checkFunLocation",
+								data:{
+									type:function(){return $('#type option:selected').val();},
+									orderIndex:function(){return $('form input[name="orderIndex"]').val()},
+									<c:if test="${module != null }">
+									,id:function(){return $('form input[name="id"]').val()}
+									</c:if>
+								}
+							}
+						}
+						
+					}
+				})
 				//config picture upload
 				$('#file_upload').uploadify({
 					'swf'      : '${ctx}/static/misc/uploadify.swf',

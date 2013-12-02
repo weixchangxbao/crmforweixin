@@ -99,5 +99,10 @@ public class Role extends IdEntity{
 	public void setModules(Collection<Module> module) {
 		this.modules = module;
 	}
+
+	@Override
+	public String toString() {
+		return "Role [name=" + name + ", code=" + code + "]";
+	}
 		
 }

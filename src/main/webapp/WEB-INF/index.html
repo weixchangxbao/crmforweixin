@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 	<title>UI Starter</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" type="text/css" href="static/jq-mobi/css/icons.css" />
+	<link rel="stylesheet" type="text/css" href="static/jq-mobi/css/af.ui.css"  />
+	<link rel="stylesheet" type="text/css" href="static/jq-mobi/css/afui.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="serverdefault.css"  />
+	
+	<script type="text/javascript" charset="utf-8" src="static/jq-mobi/appframework.ui.min.js"></script>
+    <script type="text/javascript">
+        var webRoot = "./";
+        $.ui.autoLaunch = true; //By default, it is set to true and you're app will run right away.  We set it to false to show a splashscreen
+        /* This function runs when the body is loaded.*/
+        var init = function () {
+                $.ui.backButtonText = "Back";// We override the back button text to always say "Back"
+                window.setTimeout(function () {
+                    $.ui.launch();
+                }, 1500);//We wait 1.5 seconds to call $.ui.launch after DOMContentLoaded fires
+            };
+        document.addEventListener("DOMContentLoaded", init, false);
+        $.ui.ready(function () {
+        });
+        /* This code is used for Intel native apps */
+        var onDeviceReady = function () {
+        	intel.xdk.device.hideSplashScreen();
+
+        };
+        document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+    </script>
+</head>
+<body>
+    <div id="afui"> <!-- this is the main container div.  This way, you can have only part of your app use UI -->
+        <div id="header">
+        	
+        </div>
+        <div id="content">
+            <div title='大银电商' id="main" class="panel" selected="true">
+            	<div class="top">
+				    <a>
+				    	<img class="btn" src="static/images/app/jfsc-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/ipos-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/zxdt-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/zxkf-btn.gif"/>
+				    </a>
+				</div>
+				<div class="ad"></div>
+				<div class="bottom">
+					<a>
+				    	<img class="btn" src="static/images/app/msb-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/yspt-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/hgc-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/ydzf-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/dyk-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/zsjm-btn.gif"/>
+				    </a>
+				    <a>
+				    	<img class="btn" src="static/images/app/gydy-btn.gif"/>
+				    </a>
+				</div>
+            </div>
+        </div>
+        <!-- bottom navbar. Add additional tabs here -->
+        <div id="navbar">
+           	<a href="#main" id='navbar_home' class='icon home mini'>home</a>
+           	<a href="#main" id='navbar_more' class='icon wifi mini'>more</a>
+        </div>
+    </div>
+</body>
+</html>

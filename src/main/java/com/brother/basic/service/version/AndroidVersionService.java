@@ -20,12 +20,15 @@ public class AndroidVersionService {
 	private AndroidVersionDao androidVersionDao;
 	
 	public Page<AndroidVersion> getVersionsByPageInfo(SearchBean search) {
-		Pageable pageable = new PageRequest(search.getiDisplayStart(), search.getiDisplayLength());
+		Pageable pageable = new PageRequest(search.getPage(), search.getiDisplayLength());
+		if(search.getsSearch()!=null && !search.getsSearch().equals("")){
+			androidVersionDao.findBySearch( search.getsSearch(),pageable);
+		}
 		return androidVersionDao.findAll(pageable);
 	}
 	
 	public AndroidVersion update(AndroidVersion version){
-		version.setCreateBy((String)SecurityUtils.getSubject().getPrincipal());
+		version.setCreateBy(SecurityUtils.getSubject().getPrincipal().toString());
 		version.setCreateTime(new Date());
 		return androidVersionDao.save(version);
 	}

@@ -1,0 +1,37 @@
+#thumbs{
+	position:relative;
+	height:170px;
+	width:100%;
+	display:inline-block;
+}
+
+#thumbs img{
+	-moz-transition:left 0.4s ease;
+	-webkit-transition:left 0.4s ease;
+	transition:left 0.4s ease;
+	white-space: nowrap;
+	left:0;
+	top:0;
+	position:absolute;
+	display: inline-block;
+	max-height: 100%;
+	max-width: 100%;
+	vertical-align: middle;
+}
+#thumbs .pagination{
+	position:absolute;
+	width:100%;
+	bottom:5px;
+}
+#thumbs .pagination .point{
+	display: inline-block;
+	width:6px;
+	height:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	background: #666;
+	margin:0 2px;
+}
+#thumbs .pagination .active{
+	background: red;
+}

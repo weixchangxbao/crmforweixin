@@ -13,11 +13,6 @@
 				<div class="box span12">
 					<div class="box-header well" data-original-title="">
 						<h2><i class="icon-edit"></i> Form Elements</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
 					</div>
 					<div class="box-content">
 						<form class="form-horizontal" action="${ctx}/admin/user/update" method="post">
@@ -38,10 +33,10 @@
 							   <div class="control-group">
 								<label class="control-label" >角色</label>
 								<div class="controls">
-								  <input class="input-xlarge uneditable-input" id="roleids" name="roleids" style="display:none;"></input>
-								  <span class="input-xlarge uneditable-input" id="rolenames">${user.rolename}</span>
+								  <input class="input-xlarge uneditable-input" id="roleids" name="roleids" style="display:none;" value="unchange"></input>
+								  <input class="input-xlarge uneditable-input" id="rolename" name="rolename" value="${user.rolename}" disabled="disabled">
 								  <c:if test="${model==null}">
-								   <a class="btn btn-success" data-toggle="modal" data-target="#roleModal">
+								   <a class="btn btn-success" id="roleSelect">
 						                 <i class="icon-zoom-in icon-white"></i>  
 						                   选择                                            
 						                 </a>
@@ -49,9 +44,9 @@
 								</div>
 							  </div>
 							  <div class="control-group">
-							  <label class="control-label" for="date01">失效日期</label>
+							  <label class="control-label" for="date01">部门</label>
 							  <div class="controls">
-								<input type="text" class="input-xlarge datepicker" id="date01" >
+								<input type="text" class="input-xlarge" id="department" name="department" >
 							  </div>
 							  </div>
 							  <div class="control-group" for="mobilephone">
@@ -70,7 +65,7 @@
 							  <c:if test="${model==null}">
 							  	<button type="submit" class="btn btn-primary">Save changes</button>
 							  </c:if>
-								<a class="btn" href="${ctx}/admin/user">Cancel</a>
+								<a class="btn" onclick="history.back()">Cancel</a>
 							  </div>
 							</fieldset>
 						  </form>
@@ -80,35 +75,22 @@
 			
 			</div>
 			
-		<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title" id="myModalLabel">角色选择</h4>
-		      </div>
+		<div id="roleModal" title="角色选择">
 		      <div class="modal-body">
 		        		<div class="control-group">
 		        	<label class="control-label">角色</label>
 		        	<c:forEach var="role" items="${rolesSel}" varStatus="status">
-		        		<c:if test="${status.first}||${status.index%4==0}">
+		        		<c:if test="${status.first||status.index%4==0}">
 		        			<div class="controls">
 		        		</c:if>
 		        		<label class="checkbox inline">
 						<input type="checkbox" id="inlineCheckbox1" value="${role.id}" data="${role.name}">${role.name}
 					  	</label>
-		        		<c:if test="${status.end}||${status.count%4==0}">
+		        		<c:if test="${status.end||status.count%4==0}">
 		        			</div>
 		        		</c:if>
 		    		 </c:forEach>
 				  </div>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary" id="saveRolebtn">Save changes</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	        
-		      </div>
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 		
 		<script type="text/javascript">
@@ -119,23 +101,69 @@
 					})
 				</c:if>
 				
-				$('#saveRolebtn').click(function(){
-					var rolelist='';
-					var roleIds='';
-					$('#roleModal input:checked').each(function(index){
-						if(index==0){
-							rolelist=$(this).attr('data');
-							roleIds =$(this).val();
-						}else{
-							rolelist = rolelist+','+$(this).attr('data');
-							roleIds = roleIds+','+$(this).val();
+					$("#roleModal").dialog({
+						  autoOpen: false,
+		 				  height: 250,
+		 			      width: 450,
+		 			      modal: true,
+		 			      buttons:{
+		 			    	  "提交":function(){
+		 			    		 var rolelist='';
+		 						var roleIds='';
+		 						$('#roleModal input:checked').each(function(index){
+		 							if(index==0){
+		 								rolelist=$(this).attr('data');
+		 								roleIds =$(this).val();
+		 							}else{
+		 								rolelist = rolelist+','+$(this).attr('data');
+		 								roleIds = roleIds+','+$(this).val();
+		 							}
+		 						})
+		 						$('#rolename').val(rolelist);
+		 						$('#roleids').val(roleIds);
+		 						$('#roleModal').dialog('close');	
+		 					},
+		 			    	  "关闭":function(){
+		 			    		  $(this).dialog("close");
+		 			    	  }
+		 			      }
+		 			});
+					
+					$('#roleSelect').click(function(){
+						var names = $('#rolename').val().split(',');
+						for (var i in names){
+							$('input[data="'+names[i]+'"]').attr('checked',true);
 						}
-					})
-					$('#rolenames').text(rolelist);
-					$('#roleids').val(roleIds);
-					$('#roleModal').modal('hide');	
-				})				
-			}
+						$('#roleModal').dialog('open');
+					});
+					
+					$('form').validate({
+						rules:{
+							username:{
+								required: true,
+								remote:{
+									type:"POST",
+									url:'${ctx}/admin/user/checkUsername',
+									data:{
+										id:${user.id},
+										username:function(){
+											return $('#username').val();	
+										}
+									}
+								}
+							},
+							plainPassword:{
+								required: true,
+							    minlength: 5
+							},
+							checkpassword:{
+								required: true,
+							    minlength: 5,
+							    equalTo: "#plainPassword"
+							}
+						}
+					});
+			};
 		</script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.brother.basic.service.account;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +32,10 @@ public class AccountService {
 	private DateProvider dateProvider = DateProvider.DEFAULT;
 
 	public Page<User> getUsersByPageInfo(SearchBean search){
-		Pageable pageable = new PageRequest(search.getiDisplayStart(), search.getiDisplayLength());
+		Pageable pageable = new PageRequest(search.getPage(), search.getiDisplayLength());
+		if(search.getsSearch()!=null && !search.getsSearch().equals("")){
+			return userDao.findBySearch(search.getsSearch(),pageable);
+		}
 		return userDao.findAll(pageable);
 	}
 	
@@ -54,6 +56,13 @@ public class AccountService {
 
 	public void updateUser(User user) {
 		userDao.save(user);
+	}
+	
+	public void updatePassword(User user){
+		User dbUser = userDao.findOne(user.getId());
+		dbUser.setPlainPassword(user.getPlainPassword());
+		entryptPassword(dbUser);
+		userDao.save(dbUser);
 	}
 
 	public void deleteUser(Long id) {

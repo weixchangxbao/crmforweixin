@@ -33,7 +33,7 @@ public class ProfileController {
 	public String profile(@RequestParam("id") Long id,@RequestParam("plainPassword") String planPassword){
 		User user = accountService.getUser(id);
 		user.setPlainPassword(planPassword);
-		accountService.updateUser(user);
+		accountService.updatePassword(user);
 		return "/mainpage/welcome";
 	}
 

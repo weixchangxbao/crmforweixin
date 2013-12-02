@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -18,10 +18,12 @@
              <div class="box-header well" data-original-title>
                  <h2><i class="icon-user"></i> 图片模块管理</h2>
                   <div class="box-icon">
+                  <shiro:hasPermission name="picture:create">
 				<a class="btn btn-info" href="${ctx}/admin/module/pictform">
 					<i class="icon-edit icon-white"></i>  
 						新增                                            
 					</a>
+					</shiro:hasPermission>
              </div>
              </div>
              <div class="box-content">
@@ -42,23 +44,21 @@
      
      </div><!--/row-->
       
-     <div class="modal fade" id="deleteModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">提示</h4>
-      </div>
+     <div id="deleteModal" title="删除提示">
       <div class="modal-body">
         <p>是否确定删除信息！</p>
       </div>
-      <div class="modal-footer">
-        <a class="btn commit">提交</a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+      
+      <div id="updateModal" title="更新提示">
+      <div class="modal-body">
+      	<form action="${ctx}/admin/module/updatePictureLocation">
+      		<input name="original" style="display:none">
+      		<input name="changeto" style="display:none">
+      	</form>
+        <p>是否确定更新位置信息！</p>
+      </div>
+      </div>
      <script type="text/javascript">
      	function doBodyInit(){
      		
@@ -72,21 +72,29 @@
      							{"sName":"type","mData": "type","sClass":"center" },
      							{"sName":"orderIndex","mData": "orderIndex" ,"sClass":"center"},
      							{"sName":"picture","mData": function(obj){
-     								return '<img src=\"${ctx}/upload/'+obj.picture+'\">';
+     								return '<img src=\"${ctx}/upload/'+obj.picture+'\" style="height:100px">';
      							}},
      							//{"sName":"picture","mData": "picture","sClass":"center" },
      							{"sName":"url","mData": "url","sClass":"center" },
      							{"mData" : function(obj,type,val){
-     								return  '<a class=\"btn btn-primary up\"><i class=\"icon-arrow-up icon-white\"></i></a>'+
-											'<a class=\"btn btn-primary down\"><i class=\"icon-arrow-down icon-white\"></i></a>'+
+     								return  '<input name=\"id\" value=\"'+obj.id+'\" style=\"display:none\">'+
+     										<shiro:hasPermission name="picture:location">
+     										'<a class=\"btn btn-primary up\" onclick=\"up('+obj.id+')\"><i class=\"icon-arrow-up icon-white\"></i></a>'+
+											'<a class=\"btn btn-primary down\" onclick=\"down('+obj.id+')\"><i class=\"icon-arrow-down icon-white\"></i></a>'+
+											</shiro:hasPermission>
+											<shiro:hasPermission name="picture:update">
      										'<a class=\"btn btn-info\" href=\"${ctx}/admin/module/editPicture/'+obj.id+'\">'+
      										'<i class="icon-edit icon-white"></i>'+  
      											'Edit'+                                            
      										'</a>'+
+     										</shiro:hasPermission>
+     										<shiro:hasPermission name="picture:delete">
      										'<a class=\"btn btn-danger delete\" onclick=\"doDelete('+obj.id+')\">'+
      										'<i class=\"icon-trash icon-white\"></i>'+ 
      											'Delete'+
-     										'</a>';
+     										'</a>'+
+     										</shiro:hasPermission>
+     										'';
      							},"sWidth":"30%" }
      						],
      			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
@@ -96,13 +104,79 @@
      			}
      		}
      		);
+     		
+     		$("#deleteModal").dialog({
+     			autoOpen: false,
+ 				height: 200,
+ 			      width: 350,
+ 			      modal: true,
+ 			      buttons:{
+ 			    	  "提交":function(){ 			    	
+ 			    		 location.href="${ctx}/admin/module/delete/"+$('#deleteModal input[name="id"]').val();
+ 			    	  },
+ 			    	  "关闭":function(){
+ 			    		  $(this).dialog("close");
+ 			    	  }
+ 			      }
+ 			});
+     		
+     		$("#updateModal").dialog({
+     			autoOpen: false,
+ 				height: 200,
+ 			      width: 350,
+ 			      modal: true,
+ 			      buttons:{
+ 			    	  "提交":function(){ 			    	
+ 			    		 $('#updateModal form').submit();
+ 			    	  },
+ 			    	  "关闭":function(){
+ 			    		  $(this).dialog("close");
+ 			    	  }
+ 			      }
+ 			});
      	}
      	
-
- 		function doDelete(id){ 
- 			$("#deleteModal a.commit").attr("href","${ctx}/admin/module/delete/"+id);
- 			$("#deleteModal").modal('show');
+     	function down(id){
+     		var oindex = -1;
+     		var arr = new Array();
+     		$('input[name="id"]').each(function(index){
+        		arr[index] = $(this).val();
+        		if($(this).val() == id.toString()){
+        			oindex = index;
+        		}
+     		});
+     		if(arr.length-1 == oindex){
+     			return;
+     		}else{
+     			$('#updateModal input[name="original"]').val(arr[oindex]);
+         		$('#updateModal input[name="changeto"]').val(arr[oindex+1]);
+     		}
+     		$('#updateModal').dialog('open');
+     	}
+     	
+     	function up(id){
+     		var oindex = -1;
+     		var arr = new Array();
+     		$('input[name="id"]').each(function(index){
+        		arr[index] = $(this).val();
+        		if($(this).val() == id.toString()){
+        			oindex = index;
+        		}
+     		});
+     		if(oindex == 0){
+     			return;
+     		}else{
+     			$('#updateModal input[name="original"]').val(arr[oindex]);
+         		$('#updateModal input[name="changeto"]').val(arr[oindex-1]);
+     		}
+     		$('#updateModal').dialog('open');
+     	}
+     	
+     	function doDelete(id){ 
+     		$('#deleteModal input[name="id"]').val(id);
+     		$("#deleteModal").dialog('open');
  		}
+
      </script>
 </body>
 

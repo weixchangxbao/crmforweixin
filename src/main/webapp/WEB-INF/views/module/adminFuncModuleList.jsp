@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -18,14 +18,18 @@
              <div class="box-header well" data-original-title>
                  <h2><i class="icon-user"></i> 功能模块管理</h2>
                   <div class="box-icon">
+                  <shiro:hasPermission name="function:location">
                   <a class="btn btn-info" href="${ctx}/admin/module/location">
 					<i class="icon-edit icon-white"></i>  
 						位置编辑                                           
 					</a>
+				  </shiro:hasPermission>
+				  <shiro:hasPermission name="function:create">
 				<a class="btn btn-info" href="${ctx}/admin/module/funcform">
 					<i class="icon-edit icon-white"></i>  
 						新增                                            
 					</a>
+					</shiro:hasPermission>
              </div>
              </div>
              <div class="box-content">
@@ -46,22 +50,11 @@
      
      </div><!--/row-->
       
-     <div class="modal fade" id="deleteModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">提示</h4>
-      </div>
+ <div id="deleteModal" title="删除提示">
       <div class="modal-body">
+        <input name="id" style="display:none">
         <p>是否确定删除信息！</p>
       </div>
-      <div class="modal-footer">
-        <a class="btn commit">提交</a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
      <script type="text/javascript">
      	function doBodyInit(){
@@ -76,19 +69,25 @@
      							{"sName":"type","mData": "type","sClass":"center" },
      							{"sName":"orderIndex","mData": "orderIndex" ,"sClass":"center"},
      							{"sName":"picture","mData": function(obj){
-     								return '<img src=\"${ctx}/upload/'+obj.picture+'\">';
+     								return '<img src=\"${ctx}/upload/'+obj.picture+'\" style="height:100px">';
      							}},
      							//{"sName":"picture","mData": "picture","sClass":"center" },
      							{"sName":"url","mData": "url","sClass":"center" },
      							{"mData" : function(obj,type,val){
-     								return '<a class=\"btn btn-info\" href=\"${ctx}/admin/user/edit/'+obj.id+'\">'+
+     								return  ''+ 
+     										<shiro:hasPermission name="function:update">
+     										'<a class=\"btn btn-info\" href=\"${ctx}/admin/module/editFunc/'+obj.id+'\">'+
      										'<i class="icon-edit icon-white"></i>'+  
      											'Edit'+                                            
      										'</a>'+
+     										</shiro:hasPermission>
+     										<shiro:hasPermission name="function:delete">
      										'<a class=\"btn btn-danger delete\" onclick=\"doDelete('+obj.id+')\">'+
      										'<i class=\"icon-trash icon-white\"></i>'+ 
      											'Delete'+
-     										'</a>';
+     										'</a>'+
+     										</shiro:hasPermission>
+     										'';
      							},"sWidth":"30%" }
      						],
      			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
@@ -98,12 +97,27 @@
      			}
      		}
      		);
+     		
+ 			$("#deleteModal").dialog({
+ 				autoOpen: false,
+ 				height: 200,
+ 			      width: 350,
+ 			      modal: true,
+ 			      buttons:{
+ 			    	  "提交":function(){
+ 			    		 location.href="${ctx}/admin/module/deleteFunc/"+$('#deleteModal input[name="id"]').val();
+ 			    	  },
+ 			    	  "关闭":function(){
+ 			    		  $(this).dialog("close");
+ 			    	  }
+ 			      }
+ 			});
      	}
      	
 
  		function doDelete(id){ 
- 			$("#deleteModal a.commit").attr("href","${ctx}/admin/user/delete/"+id);
- 			$("#deleteModal").modal('show');
+ 			$('#deleteModal input[name="id"]').val(id);
+ 			$("#deleteModal").dialog('open');
  		}
      </script>
 </body>

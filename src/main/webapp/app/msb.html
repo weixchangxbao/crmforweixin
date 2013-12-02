@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link href="../static/jquery-mobile/jquery.mobile-1.3.2.min.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/styles/default.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/styles/custom.css" type="text/css" rel="stylesheet"/>
+	<!-- <link href="../static/styles/navbar.css" type="text/css" rel="stylesheet"/> -->
+	<style type="text/css">
+		.btn-custom .wrap{
+			background-color:#fff;
+			border:1px solid #e1e1e1;margin:10px;
+			margin-top:20px;
+			position: relative;
+		}
+		.btn-custom .wrap a{
+			text-decoration: none;
+		}
+		.btn-custom .wrap .img{
+			 background-color:#fff;
+			 position: relative;
+		}
+		.btn-custom .wrap .img img.s-logo{
+			width:60px;
+			height:30px;
+			position: absolute;
+			z-index: 5;top:-10px;left:10px;
+		}
+		.btn-custom .wrap .img img{
+			 width:100%;
+			 /* height:200px; */
+			 margin-bottom:-4px;
+		}
+		.btn-custom .wrap .img div{
+			position:absolute;
+			left:20px;
+			bottom:0px;
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;  
+   			border-bottom:10px solid #f4f4f4;
+		}
+		.btn-custom .wrap .title a{
+			text-decoration: none;
+		}
+		.btn-custom .wrap .title h3{
+			font-weight:bolder;
+			font-size: 18px;
+			color:#4A1E30;
+			background-color:#f4f4f4;
+			height:40px;line-height: 40px;padding-left:20px;
+			/* border:10px solid #934B52; */
+			border-top: none;
+			border-bottom: none;
+			border-right: none;
+		}
+		.btn-custom .wrap .title span{
+			color:#8F1D28;
+			padding-left:15px;
+			font-size: 12px;
+		}
+		/* .btn-custom .wrap .title div{
+			padding:0px 15px;
+			font-size:15px;
+			height:30px; 
+			line-height: 30px;
+			background-color:#eee;
+			border:10px solid #8F1D28;
+			border-top: none;
+			border-bottom: none;
+			border-right: none;
+			overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+			color:#744D5D;
+		} */
+	</style>
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">MSB</div>
+			<div  style="position:absolute;right: 20px;top:2px;display: none;">
+				<a href="#" data-role="button" data-iconpos="notext" data-icon="myrefresh"></a>
+			</div>
+		</div>
+		<div data-role="content" class="btn-custom">
+			<div class="wrap">
+				<a href="#ln" data-transition="fade">
+			 		<div class="img">
+			 			<img class="s-logo" src="../static/images/app/logo-small.png"/>
+			 			<img src="../static/images/app/msb1.gif"/>
+			 			<div></div>
+			 		</div>
+			 		<div  class="title">
+				 		<h3>MSB模式理念<span>Conception</span></h3>
+				 		<!-- <div>
+				 			多维云商业服务系统是大银电子商务有限公司首创的电商服务模式，是一种基于厂商、商家、消费者
+				 		</div> -->
+			 		</div>
+		 		</a>
+		 	</div>
+		 	<div class="wrap">
+		 		<a href="#jz" data-transition="fade">
+			 		<div class="img">
+			 			<img class="s-logo" src="../static/images/app/logo-small.png"/>
+			 			<img src="../static/images/app/MSB.jpg"/>
+			 			<div></div>
+			 		</div>
+			 		<div  class="title">
+				 		<h3>MSB价值体现<span>Value Embodiment</span></h3>
+				 		<!-- <div>
+				 			MSB倡导了现代商业流通渠道与大数据背后商业逻辑相结合的全新营销模式，诸多行业专家对MSB模式进行了论证
+				 		</div> -->
+			 		</div>
+		 		</a>
+		 	</div>
+		 </div>
+		 <div data-role="footer" data-position="fixed" class="nav-custom">
+			<div data-role="navbar" data-iconpos="left">
+			    <ul>
+			        <li><a data-role="button" data-icon="myhome"  data-theme="navbar"  href="index.html" rel="external">
+			        	<span style="color:#eaeaea;font-size: 15px;">首页</span>
+			        </a></li>
+			        <li><a data-role="button" data-icon="mymore"  data-theme="navbar"  href="msb.html" rel="external">
+			        	<span style="color:#eaeaea;font-size: 15px">更多</span>
+			        </a></li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="ln">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">MSB模式理念</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<img src="../static/images/app/msb1.gif" style="width: 100%"/>
+			<div style="text-indent: 2em;margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<p style="margin:10px;">
+				MSB（Multidimensional SAAS Business）多维云商业服务系统是大银电子商务有限公司首创的电商服务模式，是一种基于厂商、商家、消费者、运营商等主体的商业一体化解决方案。MSB依托于海量贸易数据，以商家和消费者互惠互利为纽带，将线上、线下消费进行无缝衔接，打通厂商、零售商、网店及顾客间商品通路，提升消费者与厂商、商家及运营商间的粘合度，形成利益双向循环的创新商业模式。
+				<p>
+			</div>
+			<div style="text-indent: 2em;margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<p style="margin:10px;">
+				MSB倡导了现代商业流通渠道与大数据背后商业逻辑相结合的全新营销模式，诸多行业专家对MSB模式进行了论证，给予了充分的肯定，并获得了国家发明专利。MSB代表着未来以数据化引领电商的主流模式，代表着未来以诚信化加速电商发展的必然趋势，将拓宽电子商务的发展方向，由规模化走向多元化。
+				</p>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="jz">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">MSB价值体现</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<img src="../static/images/app/msb2.gif" style="width:100%"/>
+			<div style="margin:15px;background: #f4f4f4;border:1px solid #ccc">
+				<ul style="margin:15px;margin-left:30px">
+					<li>净化市场业态环境，促进规范化、诚信化交易</li>
+					<li>实现终端市场精准营销，合理调配商品资源，扩大商品销售范围，加快商品周转速度；</li>
+					<li>提升消费者购物体验，简化消费者支付流程，强化交易安全性校验；</li>
+					<li>商家准确定位消费者，消费者直接享受到商家的返利；</li>
+					<li>实现消费可追溯，有效防范了各类风险；</li>
+					<li>统一管理厂商、商家和消费者的诚信体系，提升消费粘合度。</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../static/jquery-mobile/jquery.mobile-1.3.2.min .js"></script>
+</body>
+</html>

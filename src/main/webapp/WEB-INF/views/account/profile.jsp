@@ -8,21 +8,21 @@
 </head>
 
 <body>
-	<form id="inputForm" action="${ctx}/profile" method="post" class="form-horizontal">
+	<form id="inputForm" action="${ctx}/admin/profile" method="post" class="form-horizontal">
 		<input type="hidden" name="id" value="${user.id}"/>
 		<fieldset>
 			<legend><small>资料修改</small></legend>
 			<div class="control-group">
 				<label for="name" class="control-label">用户名:</label>
 				<div class="controls">
-					<input type="text" id="name" name="name" value="${user.name}" class="input-large required"/>
+					<input type="text" id="name" name="username" value="${user.username}" class="input-large required"/>
 				</div>
 			</div>
 			<div class="control-group">
 				<input name="id" value="${user.id}" style="display:none">
 				<label for="plainPassword" class="control-label">密码:</label>
 				<div class="controls">
-					<input type="password" id="plainPassword" name="plainPassword" class="input-large" placeholder="...Leave it blank if no change"/>
+					<input type="password" id="plainPassword" name="plainPassword" class="input-large" placeholder=""/>
 				</div>
 			</div>
 			<div class="control-group">
@@ -43,7 +43,19 @@
 			//聚焦第一个输入框
 			$("#name").focus();
 			//为inputForm注册validate函数
-			$("#inputForm").validate();
+			$("#inputForm").validate({
+				rules:{
+					plainPassword:{
+						required: true,
+					    minlength: 5
+					},
+					confirmPassword:{
+						required: true,
+					    minlength: 5,
+					    equalTo: "#plainPassword"
+					}					
+				}
+			});
 		});
 	</script>
 </body>

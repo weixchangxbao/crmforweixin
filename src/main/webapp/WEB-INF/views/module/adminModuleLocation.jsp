@@ -17,7 +17,7 @@
 					<div class="box-content">
 						<ul class="thumbnails gallery">
 							<c:forEach var="topmodule" items="${top}">
-								<li  class="thumbnail">
+								<li  class="thumbnail" valueId="${topmodule.id}">
 									<img class="grayscale moduleimg" src="${ctx}/upload/${topmodule.picture}">
 									<input type="checkbox">${topmodule.name} 
 								</li>
@@ -27,7 +27,7 @@
 					<p class="center">
 							<button class="btn btn-primary left"><i class="icon-arrow-left icon-white"></i> 左移</button>
 							<button class="btn btn-primary right"><i class="icon-arrow-right icon-white"></i> 右移</button>
-							<button class="btn btn-primary "> 保存设置</button>
+							<button class="btn btn-primary" id="saveBtn"> 保存设置</button>
 					</p>
 					<table class="table table-bordered table-striped table-condensed">
 							  <thead>
@@ -39,7 +39,7 @@
 							  </thead>   
 							  <tbody>
 							  	<c:forEach items="${buttom}" var="buttomModule">
-							  		<tr>
+							  	<tr class="location" valueId="${buttomModule.id}">
 									<td>${buttomModule.name}</td>
 									<td class="center"><span><img src="${ctx}/upload/${buttomModule.picture}" style="width:100px;height:50px"></span></td>
 									<td class="center">
@@ -56,7 +56,17 @@
 					<!-- content ends -->
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
-			
+				
+				
+	<div id="formModal" title="位置变更">
+      <div class="modal-body">
+      	<form id="locationForm" action="${ctx}/admin/module/updateLocation" method="post">
+      		<input id="locations" name="locations" style="display:none">
+      	</form>
+        <p>是否确定删除信息！</p>
+     </div>
+     </div>
+      			
 		<script type="text/javascript">
 			function doBodyInit(){
 				//config picture upload
@@ -102,7 +112,54 @@
 					}
 				})
 				
+				
+				$('#saveBtn').click(function(){
+					var toplocation="";
+					var buttomlocation = "";
+					alert(111);
+					$('li.thumbnail').each(function(index){
+						var id = $(this).attr('valueId');
+						if(index == 0){
+							toplocation = id+':'+(index+1);
+						}else{
+							toplocation = toplocation+',' +id+':'+(index+1);
+						}
+					});
+					
+					$('tr.location').each(function(index){
+						var id = $(this).attr('valueId');
+						if(index == 0){
+							buttomlocation = id+':'+(index+1);
+						}else{
+							buttomlocation = buttomlocation+',' +id+':'+(index+1);
+						}
+					});
+					if(toplocation == ""){
+						$('#locations').val(buttomlocation);
+					}else{
+						$('#locations').val(toplocation+','+buttomlocation);
+					}
+					
+		 			$("#formModal").dialog({
+		 				height: 200,
+		 			      width: 350,
+		 			      modal: true,
+		 			      buttons:{
+		 			    	  "提交":function(){
+									$('#locationForm').submit();
+		 			    	  },
+		 			    	  "关闭":function(){
+		 			    		  $(this).dialog("close");
+		 			    	  }
+		 			      },
+		 			      close:function(){
+		 					$('#locations').val('');
+		 			      }
+		 			});
+		 		});
 			}
+			
+			
 		</script>      
 </body>
 </html>

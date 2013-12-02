@@ -13,7 +13,7 @@ public class AndroidVersion extends IdEntity{
 	private String name;
 	private String version;
 	private String path;
-	private String comment;
+	private String description;
 	private String createBy;
 	@Temporal(value=TemporalType.DATE)
 	private Date createTime;
@@ -35,12 +35,7 @@ public class AndroidVersion extends IdEntity{
 	public void setPath(String path) {
 		this.path = path;
 	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+	
 	public String getCreateBy() {
 		return createBy;
 	}
@@ -52,6 +47,17 @@ public class AndroidVersion extends IdEntity{
 	}
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	@Override
+	public String toString() {
+		return "AndroidVersion [name=" + name + ", version=" + version
+				+ ", path=" + path + ", description=" + description + "]";
 	}
 	
 }

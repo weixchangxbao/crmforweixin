@@ -22,9 +22,7 @@ public class ActionLog extends IdEntity{
 
 	private String detail;
 
-	@ManyToOne()
-	@JoinColumn(name="userId")
-	private User user;
+	private String username;
 
 	public String getActionName() {
 		return actionName;
@@ -58,13 +56,14 @@ public class ActionLog extends IdEntity{
 		this.detail = detail;
 	}
 
-	public User getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
+
 	
 	
 }

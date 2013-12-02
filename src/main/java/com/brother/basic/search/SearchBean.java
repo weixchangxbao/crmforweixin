@@ -8,6 +8,11 @@ public class SearchBean {
 	private String sSearch;
 	private int iSortingCols;
 	private String sEcho;
+	
+	public int getPage(){
+		return iDisplayStart/iDisplayLength;
+	}
+	
 	public int getiDisplayStart() {
 		return iDisplayStart;
 	}

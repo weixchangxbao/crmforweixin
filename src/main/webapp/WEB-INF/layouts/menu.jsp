@@ -15,6 +15,9 @@
             <shiro:hasPermission name="android:view">
             <li><a class="ajax-link" href="${ctx}/admin/version"><i class="icon-edit"></i><span class="hidden-tablet"> 版本管理</span></a></li>
             </shiro:hasPermission>
+            <shiro:hasPermission name="log:view">
+            <li><a class="ajax-link" href="${ctx}/admin/logs"><i class="icon-edit"></i><span class="hidden-tablet"> 日志管理</span></a></li>
+            </shiro:hasPermission>
             <li class="nav-header hidden-tablet">模块管理</li>
             <shiro:hasPermission name="picture:view">
             <li><a class="ajax-link" href="${ctx}/admin/module/picture"><i class="icon-align-justify"></i><span class="hidden-tablet"> 图片模块管理</span></a></li>

@@ -126,5 +126,11 @@ public class Module extends IdEntity{
 	public void setChosed(boolean chosed) {
 		this.chosed = chosed;
 	}
+
+	@Override
+	public String toString() {
+		return "Module [name=" + name + ", picture=" + picture + ", type="
+				+ type + ", orderIndex=" + orderIndex + ", url=" + url + "]";
+	}
 	
 }

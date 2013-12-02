@@ -7,9 +7,11 @@
 	</appender>
 
 	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/quickstart.log</file>
+		<file>logs/dayin.log</file>
+		<maxSizeRollBackups>10</maxSizeRollBackups>
+		<maximumFileSize>100MB</maximumFileSize>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>logs/quickstart.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>logs/dayin.%d{yyyy-MM-dd}.log</fileNamePattern>
 		</rollingPolicy>
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -17,7 +19,7 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="org.springside.examples.quickstart" level="INFO" />
+	<logger name="com.brother.basic" level="INFO" />
 
 	<!--log4jdbc -->
 	<logger name="jdbc.sqltiming" level="INFO"/>

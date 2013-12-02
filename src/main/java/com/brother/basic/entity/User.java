@@ -31,38 +31,17 @@ public class User extends IdEntity{
 
 	private String department;
 
-	private String title;
-
-	private String headportrait;
-
 	@Temporal(TemporalType.DATE)
 	private Date createTime;
 
 	private String password;
 
-	private String comment;
-
-	@Temporal(TemporalType.DATE)
-	private Date expiredDate;
-
-	private int active;
-
-	private int loginTimes;
-
-	private String email;
-	
 	private String salt;
 	
 	@Transient
 	@JsonIgnore
 	private String plainPassword;
 
-	@Temporal(TemporalType.DATE)
-	private Date lastLoginTime;
-
-	private String lastLoginIP;
-	
-	@Transient
 	private String rolename;
 	
 
@@ -111,21 +90,7 @@ public class User extends IdEntity{
 		this.department = department;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getHeadportrait() {
-		return headportrait;
-	}
-
-	public void setHeadportrait(String headportrait) {
-		this.headportrait = headportrait;
-	}
+	
 
 	public Date getCreateTime() {
 		return createTime;
@@ -135,62 +100,7 @@ public class User extends IdEntity{
 		this.createTime = createTime;
 	}
 
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public Date getExpiredDate() {
-		return expiredDate;
-	}
-
-	public void setExpiredDate(Date expiredDate) {
-		this.expiredDate = expiredDate;
-	}
-
-	public int getActive() {
-		return active;
-	}
-
-	public void setActive(int active) {
-		this.active = active;
-	}
-
-	public int getLoginTimes() {
-		return loginTimes;
-	}
-
-	public void setLoginTimes(int loginTimes) {
-		this.loginTimes = loginTimes;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Date getLastLoginTime() {
-		return lastLoginTime;
-	}
-
-	public void setLastLoginTime(Date lastLoginTime) {
-		this.lastLoginTime = lastLoginTime;
-	}
-
-	public String getLastLoginIP() {
-		return lastLoginIP;
-	}
-
-	public void setLastLoginIP(String lastLoginIP) {
-		this.lastLoginIP = lastLoginIP;
-	}
-
+	
 	public String getPlainPassword() {
 		return plainPassword;
 	}
@@ -232,4 +142,12 @@ public class User extends IdEntity{
 		this.rolename = rolename;
 	}
 
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", realname=" + realname
+				+ ", telephone=" + telephone + ", mobilephone=" + mobilephone
+				+ ", department=" + department + ", rolename=" + rolename + "]";
+	}
+
+	
 }

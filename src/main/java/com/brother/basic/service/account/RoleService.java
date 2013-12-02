@@ -33,8 +33,11 @@ public class RoleService {
 	private EntityManagerFactory entityManagerFactory;
 
 	public Page<Role> getRolesByPageInfo(SearchBean search) {
-		Pageable pageable = new PageRequest(search.getiDisplayStart(),
+		Pageable pageable = new PageRequest(search.getPage(),
 				search.getiDisplayLength());
+		if(search.getsSearch() != null && !search.getsSearch().equals("")){
+			roleDao.findBySearch(search.getsSearch(),pageable);
+		}
 		return roleDao.findAll(pageable);
 	}
 
@@ -59,6 +62,10 @@ public class RoleService {
 		tx.commit();
 		em.close();
 		roleDao.delete(id);
+	}
+
+	public Role getRoleByName(String name) {
+		return roleDao.findByName(name);
 	}
 
 }

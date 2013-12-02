@@ -1,11 +1,15 @@
 package com.brother.basic.web.account;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +29,7 @@ import com.brother.basic.entity.Role;
 import com.brother.basic.search.SearchBean;
 import com.brother.basic.search.SearchResult;
 import com.brother.basic.service.account.RoleService;
+import com.brother.basic.service.log.ActionLogService;
 import com.brother.basic.service.module.ModuleService;
 import com.brother.basic.service.permission.PermissionService;
 
@@ -37,6 +42,8 @@ public class RoleController {
 	
 	@Autowired
 	private PermissionService permissionService;
+	@Autowired
+	private ActionLogService actionLogService;
 	
 	@Autowired
 	private ModuleService moduleService;
@@ -59,24 +66,27 @@ public class RoleController {
 	}
 	
 	@RequestMapping(value="/create")
-	public String create(Role role){
+	public String create(Role role,HttpServletRequest request){
 		role.setCreateBy(SecurityUtils.getSubject().getPrincipals().toString());
 		role.setCreateTime(new Date());
 		roleService.saveOrUpdate(role);
+		actionLogService.addLog("新增角色", role.toString(), request.getRemoteAddr());
 		return "redirect:/admin/role";
 	}
 	
 	@RequestMapping(value="/update")
-	public String update(@RequestParam("name") String name,@RequestParam("id") Long id){
+	public String update(@RequestParam("name") String name,@RequestParam("id") Long id,HttpServletRequest request){
 		Role role = roleService.getRoleById(id);
 		role.setName(name);
 		roleService.saveOrUpdate(role);
+		actionLogService.addLog("更新角色", role.toString(), request.getRemoteAddr());
 		return "redirect:/admin/role";
 	}
 	
 	@RequestMapping(value="/delete/{id}")
-	public String delete(@PathVariable("id") Long id){
+	public String delete(@PathVariable("id") Long id,HttpServletRequest request){
 		Role role = roleService.getRoleById(id);
+		actionLogService.addLog("删除角色", role.toString(), request.getRemoteAddr());
 		roleService.deleteById(id);
 		return "redirect:/admin/role";
 	}
@@ -96,7 +106,7 @@ public class RoleController {
 	}
 
 	@RequestMapping(value="updateModulePermission")
-	public String updateModulePermission(@RequestParam("ids") String ids,@RequestParam("roleId") Long roleId){
+	public String updateModulePermission(@RequestParam("ids") String ids,@RequestParam("roleId") Long roleId,HttpServletRequest request){
 		Role role = roleService.getRoleById(roleId);
 		if(ids == null || ids.equals("")){
 			return "redirect:/admin/role";
@@ -107,6 +117,7 @@ public class RoleController {
 			Module module = moduleService.getModuleById(Long.parseLong(id));
 			roleModules.add(module);
 		}
+		actionLogService.addLog("更新模块权限", role.toString()+"，permission:"+ids, request.getRemoteAddr());
 		role.setModules(roleModules);
 		roleService.saveOrUpdate(role);
 		return "redirect:/admin/role";
@@ -143,7 +154,7 @@ public class RoleController {
 	}
 
 	@RequestMapping(value="updatePermission")
-	public String updatePermission(@RequestParam("chosedPermission") String chosedPermission,@RequestParam("roleId") Long roleId){
+	public String updatePermission(@RequestParam("chosedPermission") String chosedPermission,@RequestParam("roleId") Long roleId,HttpServletRequest request){
 		if(chosedPermission!=null && !chosedPermission.equals("")){
 			String[] strPermissionIds = chosedPermission.split(",");
 			List<Long> ids = new ArrayList<Long>();
@@ -154,6 +165,7 @@ public class RoleController {
 			Role role  = roleService.getRoleById(roleId);
 			if(role != null){
 				role.setPermissions(permissions);
+				actionLogService.addLog("更新权限", role.toString()+",permission:"+ids, request.getRemoteAddr());
 				roleService.saveOrUpdate(role);
 			}
 		}
@@ -207,5 +219,22 @@ public class RoleController {
 		}
 	}
 	
+	@RequestMapping(value="checkName")
+	public void checkName(@RequestParam(value="id",required=false) String id,@RequestParam("name") String name,HttpServletResponse response){
+		Role role = roleService.getRoleByName(name);
+		String result = null;
+		if(role == null){
+			result = "true";
+		}else if (id != null && role.getId() == Long.parseLong(id)) {
+			result = "true";
+		}else{
+			result = "false";
+		}
+		try {
+			response.getWriter().write(result);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
 

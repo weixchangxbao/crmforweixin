@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html><!-- InstanceBegin template="/Templates/index_t.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link href="../static/jquery-mobile/jquery.mobile-1.3.2.min.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/styles/default.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/styles/custom.css" type="text/css" rel="stylesheet"/>
+	<!-- <link href="../static/styles/navbar.css" type="text/css" rel="stylesheet"/> -->
+	<!-- InstanceBeginEditable name="head" -->
+    <style type="text/css">
+		.btn-custom .wrap{
+			background-color:#fff;
+			border:1px solid #e1e1e1;margin:10px;
+			margin-top:20px;
+			position: relative;
+		}
+		.btn-custom .wrap a{
+			text-decoration: none;
+		}
+		
+		.btn-custom .wrap .img{
+			 background-color:#fff;
+			 padding-top:35px;
+			 padding-left:30%;
+			 height: 150px;
+			 position: relative;
+		}
+		.btn-custom .wrap .img img.s-logo{
+			width:60px;
+			height:30px;
+			position: absolute;
+			z-index: 5;top:-10px;left:10px;
+		}
+		.btn-custom .wrap .img img{
+			 width:70%;
+			 margin-bottom:-4px;
+		}
+		.btn-custom .wrap .img div{
+			position:absolute;
+			left:20px;
+			bottom:0px;
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;  
+   			border-bottom:10px solid #f4f4f4;
+		}
+		.btn-custom .wrap .title a{
+			text-decoration: none;
+		}
+		.btn-custom .wrap .title h3{
+			font-weight:bolder;
+			font-size: 18px;
+			color:#4A1E30;
+			background-color:#f4f4f4;
+			height:40px;line-height: 40px;padding-left:20px;
+			border-bottom: none;
+			border-right: none;
+		}
+		.btn-custom .wrap .title span{
+			color:#8F1D28;
+			padding-left:15px;
+			font-size: 12px;
+		}
+		/* .btn-custom .wrap .title div{
+			padding:0px 15px;
+			font-size:15px;
+			height:30px; 
+			line-height: 30px;
+			background-color:#eee;
+			border:10px solid #8F1D28;
+			border-top: none;
+			border-bottom: none;
+			border-right: none;
+			overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+			color:#744D5D;
+		} */
+	</style>
+	<!-- InstanceEndEditable -->
+</head>
+<body>
+	<div data-role="page">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg"><!-- InstanceBeginEditable name="title" -->大银卡<!-- InstanceEndEditable --></div>
+			<div  style="position:absolute;right: 20px;top:2px;display: none;">
+				<a href="#" data-role="button" data-iconpos="notext" data-iconshadow="false" data-icon="refresh"></a>
+			</div>
+		</div>
+		
+		<!-- InstanceBeginEditable name="content" -->
+		<div data-role="content" class="btn-custom">
+			<div class="wrap">
+				<a href="#dyk" data-transition="fade">
+		 		<div class="img">
+		 			<img class="s-logo" src="../static/images/app/logo-small.png"/>
+		 			<img src="../static/images/app/dyk.gif"/>
+		 			<div></div>
+		 		</div>
+		 		<div  class="title">
+		 			
+				 		<h3>大银卡<span>DYCF Card</span></h3>
+				 		<!-- <div>
+				 			由大银电子商务推出的大银卡是为用户贴身打造的线上线下消费卡，为用户提供多种形式的配套增值服务
+				 		</div> -->
+			 		
+		 		</div>
+		 		</a>
+		 	</div>
+		 	<div class="wrap">
+		 		<a href="#jhk" data-transition="fade">
+			 		<div class="img">
+			 			<img class="s-logo" src="../static/images/app/logo-small.png"/>
+			 			<img src="../static/images/app/jhk.gif"/>
+			 			<div></div>
+			 		</div>
+			 		<div  class="title">
+				 		<h3>大银交行卡<span>BCM Card</span></h3>
+				 		<!-- <div>
+				 			由大银与交通银行联手打造的一款提供增值服务的银行联名卡，是与银行共同探索、打造、创新的一款新颖的金融理财、金融增值产品
+				 		</div> -->
+			 		</div>
+		 		</a>
+		 	</div>
+            <div class="wrap">
+            	<a href="#eksc" data-transition="fade">
+			 		<div class="img">
+			 			<img class="s-logo" src="../static/images/app/logo-small.png"/>
+			 			<img src="../static/images/app/eksc.gif"/>
+			 			<div></div>
+			 		</div>
+			 		<div  class="title">
+				 		<h3>易卡商城<span>E-Card Mall</span></h3>
+				 		<!-- <div>
+				 			大银集团利用专利技术在全国各省市广泛的提供礼品卡等预付费产品和支付服务。建立起消费者→经销商→内容提供商的自增长网络
+				 		</div> -->
+			 		</div>
+		 		</a>
+		 	</div>
+            
+		 </div>
+		<!-- InstanceEndEditable -->
+		
+        <div data-role="footer" data-position="fixed" class="nav-custom">
+			<div data-role="navbar" data-iconpos="left">
+			    <ul>
+			        <li><a data-role="button" data-icon="myhome"  data-theme="navbar"  href="index.html" rel="external">
+			        	<span style="color:#eaeaea;font-size: 15px;">首页</span>
+			        </a></li>
+			        <li><a data-role="button" data-icon="mymore"  data-theme="navbar"  href="msb.html" rel="external">
+			        	<span style="color:#eaeaea;font-size: 15px">更多</span>
+			        </a></li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+	<!-- InstanceBeginEditable name="page" -->
+	<div data-role="page" id="dyk">
+    	<div data-role="header" data-position="fixed">
+			<div class="header-bg">大银卡</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+        <div data-role="content">
+        	<div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+                <h4>大银卡</h4>
+                <div>
+                	<img src="../static/images/app/dyk.gif" style="width:35%;float:left"/>
+                    由大银电子商务推出的大银卡是为用户贴身打造的线上线下消费卡，为用户提供多种形式的配套增值服务
+                </div>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+                <h4>价值</h4>
+                <ul data-role="listview">
+                    <li>提供优质品牌商圈导购服务</li>
+                    <li>畅享商户消费优惠折扣</li>
+                    <li>消费积分奖励，二次受惠</li>
+                    <li>绑定APP享受随时随地的商户促销</li>
+                    <li>尽显VIP消费奢华享受</li>
+                    <li>订制个性化的消费理财计划</li>
+                    <li>真正的一次消费，多重奖励，长久受益！</li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+                <h4>大银卡积分说明</h4>
+                <ul data-role="listview">
+                    <li>使用大银卡每消费满500元，大银云商平台即于当日赠送一个奖励资格</li>
+                    <li>消费金额不足500元时，大银系统会自动累计，自达到奖励资格次日起，开始享受积分奖励</li>
+                    <li>每天奖励的积分数，根据大银云商平台当天的销售额而定</li>
+                    <li>奖励的积分，可在大银云商平台上换购等值商品，在订单结算时直接使用</li>
+                    <li>每个奖励资格的积分奖励累计达到当期积分奖励上限时，奖励资格终止</li>
+                    <li>奖励资格有效期：每个奖励资格的奖励时间最长为一年</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="jhk">
+    	<div data-role="header" data-position="fixed">
+			<div class="header-bg">大银交行卡</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+        <div data-role="content">
+    	<div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+            <h4>大银交行卡</h4>
+            <div>
+            	<img src="../static/images/app/jhk.gif" style="float:right;width: 50%"/>
+            	由大银与交通银行联手打造的一款提供增值服务的银行联名卡，是与银行共同探索、打造、创新的一款新颖的金融理财、金融增值产品。
+            </div>
+        </div>
+        <div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+           	<h4>价值</h4>
+            <ul data-role="listview"><li>在线购物</li>
+                <li>移动支付</li>
+                <li>费用充值</li>
+                <li>积分购物</li>
+                <li>积分抵现金</li>
+                <li>积分抽奖</li>
+                <li>积分兑换礼品</li>
+            </ul>
+        </div>
+        <div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+            <h4>大银交行卡积分说明</h4>
+            <ul data-role="listview">
+                <li>使用大银卡每消费满500元，大银云商平台即于当日赠送一个奖励资格</li>
+                <li>消费金额不足500元时，大银系统会自动累计，自达到奖励资格次日起，开始享受积分奖励</li>
+                <li>每天奖励的积分数，根据大银云商平台当天的销售额而定</li>
+                <li>奖励的积分，可在大银云商平台上换购等值商品，在订单结算时直接使用</li>
+                <li>每个奖励资格的积分奖励累计达到当期积分奖励上限时，奖励资格终止</li>
+            </ul>
+        </div>   
+        </div>
+    </div>
+    <div data-role="page" id="eksc">
+    	<div data-role="header" data-position="fixed">
+			<div class="header-bg">大银交行卡</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+        <div data-role="content">
+            <div data-role="collapsible" data-collapsed="false" data-theme="custom" data-content-theme="d" style="margin:10px;">
+                <h4>易卡商城</h4>
+                <div>
+                    大银集团利用专利技术在全国各省市广泛的提供礼品卡等预付费产品和支付服务。建立起消费者→经销商→内容提供商的自增长网络。
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- InstanceEndEditable --> 
+	<script type="text/javascript" src="../static/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../static/jquery-mobile/jquery.mobile-1.3.2.min .js"></script>
+</body>
+<!-- InstanceEnd --></html>

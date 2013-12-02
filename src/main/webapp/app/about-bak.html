@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="../static/jquery-mobile/jquery.mobile-1.3.2.min.css" type="text/css" rel="stylesheet"/>
+	<link href="../static/styles/default.css" type="text/css" rel="stylesheet"/>
+	<style type="text/css">
+		.btn-custom .ui-btn{
+			box-shadow: none!important; 
+			-moz-box-shadow: none!important;
+			margin:0px!important;
+			margin-top:0px!important;
+			margin-bottom:0px!important;
+			line-height: 60px;
+			padding:0px 20px;
+		}
+		.btn-custom .ui-btn .ui-btn-inner{
+			border:none!important;
+		}
+		.btn-custom .btn-img{
+			height:60px; min-height:60px; width:100px;
+		}
+		.btn-custom .btn-img img{
+			-moz-border-radius:5px;
+			border-radius:5px;
+		}
+		.btn-custom .title{
+			 text-align: left;width:60%;
+			 margin-left:10px;
+		}
+		.btn-custom .title h2{
+			 line-height: 40px;
+			 font-size: 20px;
+			 color:#7b7b7b;
+		}
+		.btn-custom .title div{
+			 font-size: 13px;color:orange;line-height: 20px;
+			 overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+		}
+		.btn-custom .content{
+			background-color: #eee;
+			padding:10px;
+			margin:-10px 0;
+			box-shadow:-0px -5px 5px #888 inset;
+		}
+		.btn-custom .content ul{
+			margin:0;
+		}
+		.btn-custom .content-list{
+			background-color: #eee;padding:10px;padding-bottom:15px;margin:-10px 0;
+			box-shadow:-0px -5px 5px #888 inset;
+		}
+		.btn-custom .info{
+			padding:10px;
+			text-indent: 2em;
+			background: #fff;
+			border:1px solid #ccc;
+			-moz-border-radius:0px 0px 10px 10px;
+			border-radius:0px 0px 10px 10px;
+			box-shadow:2px 5px 1px #888;
+			margin-bottom:10px; 
+		}
+		.btn-custom .info-img{
+			margin-bottom:-10px;
+			-moz-border-radius:10px 10px 0 0;
+			border-radius:10px 10px 0 0;
+			box-shadow:2px 0px 1px #888;
+		}
+		.btn-custom .img-info{
+			background-color: #eee;
+			box-shadow:-0px -5px 5px #888 inset;
+			padding: 10px 0;
+			margin:-10px 0;
+		}
+		.btn-custom .img-info div.ui-grid-a{
+			margin-left:10px;
+		}
+		.btn-custom .img-info img{
+			-moz-border-radius:10px;
+			border-radius:10px;
+			box-shadow:2px 2px 1px #888888;
+		}
+		.backToTop {
+		    display: none;
+		    width: 20px;
+		    line-height: 1.2;
+		    padding: 5px 0;
+		    background-color: #000;
+		    color: #fff;
+		    font-size: 12px;
+		    text-align: center;
+		    position: fixed;
+		    _position: absolute;
+		    right: 10px;
+		    bottom: 100px;
+		    _bottom: "auto";
+		    cursor: pointer;
+		    opacity: .6;
+		    filter: Alpha(opacity=60);
+		}
+	</style>
+</head>
+<body id="top">
+	<div data-role="page">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">关于大银</div>
+			<div  style="position:absolute;right: 20px;top:2px;">
+				<a href="#" data-role="button" data-iconpos="notext" data-iconshadow="false" data-icon="refresh"></a>
+			</div>
+		</div>
+		<div data-role="content" class="btn-custom">
+			<div class="ui-grid-solo">
+				 <div class="ui-block-a">
+				 	<img alt="" src="../static/images/app/about-top.gif" style="margin-bottom:-7px;padding:0px;width:100%;border:none">
+				 </div>
+			</div>
+			<div data-role="collapsible" data-theme="d" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-inset="false">
+			    <h3>
+					<div class="ui-grid-b">
+				 		 <div class="ui-block-a">
+				 		 	<div class="btn-img">
+				 		 		<img src="../static/images/app/gsjj.gif" style="width:100%;"/>
+				 		 	</div>
+				 		 </div>
+				 		 <div class="ui-block-b title">
+				 		 	<h2>公司简介</h2>
+				 		 	<div>
+				 		 		Company Introduction
+				 		 	</div>
+				 		 </div>
+			 		</div>
+				</h3>
+			</div>
+			<div data-role="collapsible" data-theme="d" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-inset="false">
+			    <h3>
+					<div class="ui-grid-b">
+				 		 <div class="ui-block-a">
+				 		 	<div class="btn-img">
+				 		 		<img src="../static/images/app/about-csr0.gif" style="width:100%;height:60px;"/>
+				 		 	</div>
+				 		 </div>
+				 		 <div class="ui-block-b title">
+				 		 	<h2>大银创始人</h2>
+				 		 	<div>
+				 		 		DYCF Founder
+				 		 	</div>
+				 		 </div>
+			 		</div>
+				</h3>
+			</div>
+			<div data-role="collapsible" data-theme="d" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-inset="false">
+			    <h3>
+					<div class="ui-grid-b">
+				 		 <div class="ui-block-a">
+				 		 	<div class="btn-img">
+				 		 		<img src="../static/images/app/dyzz.gif" style="width:100%;height:60px;"/>
+				 		 	</div>
+				 		 </div>
+				 		 <div class="ui-block-b title">
+				 		 	<h2>大银资质</h2>
+				 		 	<div>
+				 		 		DYCF Qualifications
+				 		 	</div>
+				 		 </div>
+			 		</div>
+				</h3>
+			</div>
+			<div data-role="collapsible" data-theme="d" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-inset="false">
+			    <h3>
+					<div class="ui-grid-b">
+				 		 <div class="ui-block-a">
+				 		 	<div class="btn-img">
+				 		 		<img src="../static/images/app/whln.gif" style="width:100%;"/>
+				 		 	</div>
+				 		 </div>
+				 		 <div class="ui-block-b title">
+				 		 	<h2>文化理念</h2>
+				 		 	<div>
+				 		 		Culture Conception
+				 		 	</div>
+				 		 </div>
+			 		</div>
+				</h3>
+			</div>
+		</div>
+		
+		 <div data-role="footer" data-position="fixed" class="nav-custom">
+            <div data-role="navbar" data-iconpos="left">
+                <ul>
+                    <li><a class="foot-bar home"  href="index.html" rel="external">
+                        <span style="color:#eaeaea;font-size: 16px;">首页</span>
+                    </a></li>
+                    <li><a class="foot-bar more"  href="msb.html" rel="external">
+                        <span style="color:#eaeaea;font-size: 16px">更多</span>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+	</div>
+	<div data-role="page" id="gsjj">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">公司简介</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<div class="content">
+				<img class="info-img" src="../static/images/app/about-js.gif" width="100%"/>
+				<div class="info">
+					<p>
+					上海大银电子商务有限公司是大银集团属下子公司，中国著名电子商务运营服务商，国家商务部电子商务产业研究基地企业。公司成立于2004年，总部坐落于世界500强企业的云基地，国家一级高科技园区——上海张江集电港科技领袖之都。从成立之初，大银一贯坚持“商为本，客为尊。”的经营理念，全心致力于电商及行业信息化科技创新及服务模式的创新。大银电子商务拥有强大的技术研发团队和专业的运营团队，先后为全国各省市搭建城市信息化“星光工程”创新平台、数字传播信息系统、科技馆数字科普系统等高新项目，并与重点高校组建数据库安全研究中心，协同完成对于数据库和数据仓库安全体系的研究和优化。旗下通过自身技术团队独立研发的多维云商业服务系统（MSB）获得了多项国家发明专利和软著，为电子商务发展提供了强有力的理论依据并广泛应用于在线交易、手机商城、移动支付、数据治理、商业智能等领域，真正实现“让大银成为消费者的财富银行”的企业愿景。
+					<p>
+					<p>
+					大银通过近十年在电商和信息化领域的专注和诚信积累，先后被工信部、科技部评为示范性企业，被农业部列为首家战略合作企业，被商务部列为电子商务产业研究会及产业研究基地，旗下支付和信用安全体系被交通银行、平安银行等国有、商业银行作为首批战略合作伙伴。大银在大力推进商务电子化和消费一体化的同时建立了完善的运营服务体系及团队人才培养机制，不断提升客户体验，被客户誉为国内诚信电商企业。“云层之上永无雨，创新之下恒大银”将引领大银人向中国电子商务新领域迈进。
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="dycsr">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">大银创始人</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<div class="content">
+				<img class="info-img" src="../static/images/app/about-csr.jpg" style="width:100%;"/>
+				<div class="info">
+					<p>
+						陈冰女士，是大银电子商务有限公司创始人，并任大银电子商务董事局主席兼首席执行官。在创业道路上，陈冰一直怀着坚定的信念，脚踏实地的规划宏大的事业蓝图。在他的带领下，大银必将开拓电子商务行业新纪元。
+					<p>
+				</div>
+				<img class="info-img" src="../static/images/app/about-csr1.gif" style="width:100%;"/>
+				<div class="info" style="text-align: center;">全国政协主席贾庆林接见陈冰总裁</div>
+				<img class="info-img" src="../static/images/app/about-csr2.gif" style="width:100%"/>
+				<div class="info" style="text-align: center;">国务委员刘延东接见陈冰总裁</div>
+				<ul data-role="listview" data-inset="true" data-theme="d">
+					<li>2004年：上海市科技创业领军人物</li>
+					<li>2006年：五一时代英模勋章奖</li>
+					<li>2007年：中国十大创业领袖 中国女性经济年度创新人物</li>
+					<li>2008年：中国农业信息化十大年度人物</li>
+					<li>2009年：中国信息化年度贡献奖</li>
+					<li>2010年：商务部中国国际经济学会学术委员</li>
+					<li>2011年：中国女性经济年度创新人物</li>
+					<li>2012年：商务部中国电子商务产业研究会副主任</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="dyzz">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">大银资质</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<div class="img-info">
+		    	<div class="ui-grid-a">
+		    		<div class="ui-block-a">
+		    			<img src="../static/images/app/about-zz1.gif" style="width:95%;"/>
+		    		</div>
+		    		<div class="ui-block-b">
+		    			<img src="../static/images/app/about-zz2.gif" style="width:95%;"/>
+		    		</div>
+		    		<div class="ui-block-a">
+		    			<img src="../static/images/app/about-zz3.gif" style="width:95%;"/>
+		    		</div>
+		    		<div class="ui-block-b">
+		    			<img src="../static/images/app/about-zz4.gif" style="width:95%;"/>
+		    		</div>
+		    	</div>
+			</div>
+		</div>
+	</div>
+	<div data-role="page" id="whln">
+		<div data-role="header" data-position="fixed">
+			<div class="header-bg">文化理念</div>
+			<div  style="position:absolute;left: 20px;top:2px;">
+				<a href="#" data-iconshadow="false" data-theme="a" data-rel="back" data-role="button" data-iconpos="notext" data-icon="back"></a>
+			</div>
+		</div>
+		<div data-role="content">
+			<div class="content">
+				<ul data-role="listview" data-inset="true" data-theme="d">
+					<li>文化：大银财富 共享未来 信息共享 资源共享 财富共享</li>
+					<li>使命：更好的消费 更多的财富</li>
+					<li>愿景：让DYCF 成为消费者的财富银行</li>
+					<li>价值观：以客户为中心 创新增值服务</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/jquery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../static/jquery-mobile/jquery.mobile-1.3.2.min .js"></script>
+</body>
+</html>

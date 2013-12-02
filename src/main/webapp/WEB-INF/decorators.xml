@@ -3,7 +3,7 @@
 	<excludes>
 		<pattern>/static/*</pattern>
 		<pattern>/app/*</pattern>
-		<pattern>/api/*</pattern>
+		<pattern>/apk/*</pattern>
 		<pattern>/upload/*</pattern>
 		<pattern>/login</pattern>
 	</excludes>

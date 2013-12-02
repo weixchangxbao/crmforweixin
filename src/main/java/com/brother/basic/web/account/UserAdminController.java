@@ -1,7 +1,11 @@
 package com.brother.basic.web.account;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +23,7 @@ import com.brother.basic.search.SearchBean;
 import com.brother.basic.search.SearchResult;
 import com.brother.basic.service.account.AccountService;
 import com.brother.basic.service.account.RoleService;
+import com.brother.basic.service.log.ActionLogService;
 
 @Controller
 @RequestMapping(value="/admin/user")
@@ -28,6 +33,8 @@ public class UserAdminController {
 	private AccountService accountService;
 	@Autowired
 	private RoleService roleService;
+	@Autowired
+	private ActionLogService actionLogService;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String show(){
@@ -54,7 +61,7 @@ public class UserAdminController {
 	}
 	
 	@RequestMapping(value="/create")
-	public String create(User user,@RequestParam String roleids){
+	public String create(User user,@RequestParam String roleids,HttpServletRequest request){
 		String rolenames = "";
 		if(roleids != null && !roleids.trim().equals("")){
 			String[]ids = roleids.split(",");
@@ -71,7 +78,8 @@ public class UserAdminController {
 			user.setRoles(roles);
 			user.setRolename(rolenames);
 		}
-		accountService.updateUser(user);
+		accountService.registerUser(user);
+		actionLogService.addLog("创建用户", user.toString(), request.getRemoteAddr());
 		return "/account/adminUserList";
 	}
 	
@@ -83,7 +91,8 @@ public class UserAdminController {
 	}
 	
 	@RequestMapping(value="delete/{id}")
-	public String delete(@PathVariable("id") Long id,Model model){
+	public String delete(@PathVariable("id") Long id,Model model,HttpServletRequest request){
+		actionLogService.addLog("删除用户", "deleteUser:"+id, request.getRemoteAddr());
 		accountService.deleteUser(id);
 		return "redirect:/admin/user";
 	}
@@ -97,29 +106,54 @@ public class UserAdminController {
 	}
 	
 	@RequestMapping(value="update")
-	public String updateUser(User user,@RequestParam String roleids){
+	public String updateUser(User user,@RequestParam String roleids,HttpServletRequest request){
 		String rolenames = "";
 		User oUser = accountService.getUser(user.getId());
 		oUser.setUsername(user.getUsername());
 		oUser.setRealname(user.getRealname());
-		oUser.setExpiredDate(user.getExpiredDate());
+		oUser.setDepartment(user.getDepartment());
+		oUser.setMobilephone(user.getMobilephone());
+		oUser.setTelephone(user.getTelephone());
 		if(roleids != null && !roleids.trim().equals("")){
-			String[]ids = roleids.split(",");
-			List<Role> roles = new ArrayList<Role>();
-			for(int i=0;i<ids.length;i++){
-				Role role  = roleService.getRoleById(Long.parseLong(ids[i]));
-				roles.add(role);
-				if(i==0){
-					rolenames = role.getName();
-				}else{
-					rolenames = rolenames + "," +role.getName();
+			if(!roleids.equals("unchange")){
+				String[]ids = roleids.split(",");
+				List<Role> roles = new ArrayList<Role>();
+				for(int i=0;i<ids.length;i++){
+					Role role  = roleService.getRoleById(Long.parseLong(ids[i]));
+					roles.add(role);
+					if(i==0){
+						rolenames = role.getName();
+					}else{
+						rolenames = rolenames + "," +role.getName();
+					}
 				}
+				oUser.setRoles(roles);
+				oUser.setRolename(rolenames);
 			}
-			oUser.setRoles(roles);
+		}else{
+			oUser.setRoles(new ArrayList<Role>());
 			oUser.setRolename(rolenames);
 		}
-		
+		actionLogService.addLog("更新用户", user.toString()+"change to:"+oUser.toString(), request.getRemoteAddr());
 		accountService.updateUser(oUser);
 		return "/account/adminUserList";
+	}
+	
+	@RequestMapping(value="/checkUsername")
+	public void checkUsername(@RequestParam("username") String username,@RequestParam(value="id",required=false) String id,HttpServletResponse response){
+		User user = accountService.findUserByUsername(username);
+		String result = null;
+		if(user == null){
+			result = "true";
+		}else if (id != null && user.getId() == Long.parseLong(id)) {
+			result = "true";
+		}else{
+			result = "false";
+		}
+		try {
+			response.getWriter().write(result);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
