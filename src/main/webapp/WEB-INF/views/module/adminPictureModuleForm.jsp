@@ -85,13 +85,10 @@
 							digits:true,
 							remote:{
 								type:"POST",
-								url:"/admin/module/checkFunLocation",
+								url:"${ctx}/admin/module/checkFunLocation",
 								data:{
 									type:2,
-									orderIndex:function(){return $('form input[name="orderIndex"]').val()}
-									<c:if test="${module != null }">
-									,id:function(){return $('form input[name="id"]').val()}
-									</c:if>
+									orderIndex:function(){return $('form input[name="orderIndex"]').val()},
 								}
 							}
 						}

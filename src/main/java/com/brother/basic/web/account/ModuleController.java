@@ -218,8 +218,7 @@ public class ModuleController {
 	}
 	
 	@RequestMapping(value="checkFunLocation")
-	public void checkLocation(@RequestParam(value="id",required=false) String id,
-			@RequestParam("type") int type,@RequestParam("orderIndex") int orderIndex,HttpServletResponse response){
+	public void checkLocation(@RequestParam("type") int type,@RequestParam("orderIndex") int orderIndex,HttpServletResponse response){
 		ModuleType moduleType = null;
 		for(ModuleType mt: ModuleType.values()){
 			if(mt.ordinal()==type){
@@ -229,8 +228,6 @@ public class ModuleController {
 		String result = null;
 		Module module = moduleService.findByTypeAndOrederIndex(moduleType, orderIndex);
 		if(module == null){
-			result = "true";
-		}else if(id != null && module.getId() == Long.parseLong(id)){
 			result = "true";
 		}else{
 			result = "false";

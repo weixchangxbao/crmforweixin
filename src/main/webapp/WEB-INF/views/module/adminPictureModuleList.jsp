@@ -46,6 +46,7 @@
       
      <div id="deleteModal" title="删除提示">
       <div class="modal-body">
+      	<input name="id" style="display:none">
         <p>是否确定删除信息！</p>
       </div>
       </div>

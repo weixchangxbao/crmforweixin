@@ -96,13 +96,10 @@
 							digits:true,
 							remote:{
 								type:"POST",
-								url:"/admin/module/checkFunLocation",
+								url:'${ctx}/admin/module/checkFunLocation',
 								data:{
-									type:function(){return $('#type option:selected').val();},
-									orderIndex:function(){return $('form input[name="orderIndex"]').val()},
-									<c:if test="${module != null }">
-									,id:function(){return $('form input[name="id"]').val()}
-									</c:if>
+									type:function(){return $('#type option:selected').val()},
+									orderIndex:function(){return $('form input[name="orderIndex"]').val()}
 								}
 							}
 						}
