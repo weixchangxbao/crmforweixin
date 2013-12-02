@@ -4,15 +4,15 @@
   -moz-tap-highlight-color: rgba(0,0,0,0);
   -ms-touch-action: none;
   -moz-user-select: -moz-none;
-  -webkit-touch-callout: none;
+ /*  -webkit-touch-callout: none; */
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  box-sizing: border-box;  
 }
 body {
-  overflow-x: hidden;
+  /* overflow-x: hidden;
   -webkit-text-size-adjust: none;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #000;
@@ -20,7 +20,7 @@ body {
   display: -webkit-box;
   background: #FFFFFF;
   -webkit-box-orient: vertical;
-  -webkit-box-align: stretch;
+  -webkit-box-align: stretch; */
 }
 .ui-icon {
   background: #666;
@@ -238,7 +238,7 @@ body {
   background-color: transparent;
 }
 #afui #content {
-  z-index: 180;
+  /* z-index: 180;
   display: block;
   position: absolute;
   top: 44px;
@@ -247,25 +247,25 @@ body {
   right: 0;
   overflow: hidden;
   background: inherit;
-  color: inherit;
+  color: inherit; */
 }
 #afui .panel {
-  z-index: 180;
+  /* z-index: 180;
   width: 100%;
   height: 100%;
   display: none;
   position: absolute;
   top: 0;
-  left: 0;
-  overflow-y: auto;
+  left: 0; */
+  /* overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  padding: 10px;
+  -webkit-perspective: 1000; */
+  /* padding: 10px;
   padding-top: 0px;
   color: inherit;
-  background: inherit;
+  background: inherit; */
 }
 #afui .panel > * {
   -webkit-backface-visibility: hidden;

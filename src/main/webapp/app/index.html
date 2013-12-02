@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<link href="../static/jquery-mobile/jquery.mobile-1.3.2.min.css" type="text/css" rel="stylesheet"/>
-	<link href="../static/jquery-plugs/idangerous.swiper.css" type="text/css" rel="stylesheet"/>
 	<link href="../static/styles/default.css" type="text/css" rel="stylesheet"/>
 	<link href="../static/styles/navbar.css" type="text/css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="../static/jq-mobi-plugs/touchTouch.css"/>
 	<style type="text/css">
 		.custom-content{
 			padding:10px;
@@ -44,44 +44,17 @@
 			text-align:center;
 			font-size: 14px;
 		}
-		.pagination {
-		  position:absolute;
-		  left: 0;
-		  text-align: center;
-		  width: 100%;
-		  z-index: 20;
-		  bottom: 10px;
-		}
-		.swiper-pagination-switch {
-		  display: inline-block;
-		  width: 5px;
-		  height: 5px;
-		  border-radius: 5px;
-		  background: #aaa;
-		  box-shadow: 0px 1px 2px #555 inset;
-		  opacity: 0.8;
-		  margin: 0 3px;
-		  cursor: pointer;
-		}
-		.swiper-active-switch {
-		  background: red;
-		}
 	</style>
 	<script type="text/javascript" src="../static/lazyload.js"></script>
 	<script type="text/javascript">
 		function loadComplete(){
-			var mySwiper = new Swiper('.swiper-container',{
-			    pagination: '.pagination',
-			    loop:true,
-			    grabCursor: true,
-			    paginationClickable: true
-			});
+			$('#thumbs a').touchTouch();
 		}
 		function loadscript(){
 			LazyLoad.js([
 			'../static/jquery/jquery-1.9.1.min.js',
-			'../static/jquery-mobile/jquery.mobile-1.3.2.min .js',  
-			'../static/jquery-plugs/idangerous.swiper-2.3.min.js'
+			'../static/jquery-mobile/jquery.mobile-1.3.2.min.js',
+			'../static/jq-mobi-plugs/touchTouch.js'
 			],loadComplete);
 		}
         setTimeout(loadscript,2);
@@ -92,9 +65,6 @@
 		<div data-role="header" data-position="fixed">
 			<img class="logo" src="../static/images/app/logo.png"/>
 			<div class="header-bg">大银电商</div>
-			<div style="position:absolute;right: 20px;top:2px;">
-				<a href="#" data-role="button" data-iconpos="notext" data-iconshadow="false" data-icon="refresh"></a>
-			</div>
 		</div>
 		
 		<div data-role="content" class="custom-content">
@@ -121,29 +91,27 @@
 					</a>
 				</div>
 			</div>	
-			<div class="swiper-container" style="height:170px;">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<a href="http://mall.dycf.cn">
-						<img src="../static/images/app/index-ad1.gif" width="100%"/>	
-						</a>
+			<div id="thumbs">
+				<a href="http://mall.dycf.cn" data-ignore="true">
+					<div>
+						<img src="../static/images/app/index-ad1.gif" style="width:100%;height:170px;" />	
 					</div>
-					<div class="swiper-slide">
-						<a href="http://mall.dycf.cn">
-						<img src="../static/images/app/index-ad2.gif" width="100%"/>	
-						</a>
+				</a>
+				<a href="http://mall.dycf.cn" data-ignore="true">
+					<div>
+						<img src="../static/images/app/index-ad2.gif" style="width:100%;height:170px;"/>	
 					</div>
-					<div class="swiper-slide">
-						<a href="http://mall.dycf.cn">
-						<img src="../static/images/app/index-ad3.gif" width="100%"/>
-						</a>	
+				</a>
+				<a href="http://mall.dycf.cn" data-ignore="true">
+					<div>
+						<img src="../static/images/app/index-ad3.gif" style="width:100%;height:170px;"/>	
 					</div>
-					<div class="swiper-slide">
-						<a href="http://mall.dycf.cn">
-						<img src="../static/images/app/index-ad4.gif" width="100%"/>
-						</a>	
+				</a>
+				<a href="http://mall.dycf.cn" data-ignore="true">
+					<div>
+						<img src="../static/images/app/index-ad4.gif" style="width:100%;height:170px;"/>	
 					</div>
-				</div>
+				</a>
 				<div class="pagination"></div>
 			</div>
 			<div class="ui-grid-b">

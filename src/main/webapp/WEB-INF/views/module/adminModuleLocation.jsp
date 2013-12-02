@@ -116,7 +116,6 @@
 				$('#saveBtn').click(function(){
 					var toplocation="";
 					var buttomlocation = "";
-					alert(111);
 					$('li.thumbnail').each(function(index){
 						var id = $(this).attr('valueId');
 						if(index == 0){

@@ -23,7 +23,7 @@ public class LoginController {
 		if(user == null){
 			return "/account/login";
 		}else{
-			return "/mainpage/welcome";
+			return "redirect:/login/welcome";
 		}
 		
 	}

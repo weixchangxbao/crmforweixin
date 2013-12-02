@@ -95,6 +95,10 @@
 	<session-config>
 		<session-timeout>20</session-timeout>
 	</session-config>
+	
+	<welcome-file-list>
+		<welcome-file>/app/index.html</welcome-file>
+	</welcome-file-list>
 
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>

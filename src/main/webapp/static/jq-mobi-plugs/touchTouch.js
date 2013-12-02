@@ -13,7 +13,7 @@
 		var len=imgList.length;
 		var index=0;
 		imgList[index].style.display="block";
-		$(this).on("swipeLeft ","img",function(e){
+		$(this).on("swipeleft  ","img",function(e){
 			imgList[index].style.display="none";
 			$("div.point").eq(index).removeClass("active");
 			index++;
@@ -23,7 +23,7 @@
 			imgList[index].style.display="block";
 			$("div.point").eq(index).addClass("active");
 		});
-		$(this).on("swipeRight ","img",function(e){
+		$(this).on("swiperight ","img",function(e){
 			imgList[index].style.display="none";
 			$("div.point").eq(index).removeClass("active");
 			index--;
@@ -34,4 +34,4 @@
 			$("div.point").eq(index).addClass("active");
 		});
 	};
-})(af);
+})(jQuery);

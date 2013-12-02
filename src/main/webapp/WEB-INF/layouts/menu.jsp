@@ -26,6 +26,5 @@
             <li><a class="ajax-link" href="${ctx}/admin/module/func"><i class="icon-calendar"></i><span class="hidden-tablet"> 功能模块管理</span></a></li>
             </shiro:hasPermission>
         </ul>
-        <label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
     </div><!--/.well -->
  </div><!--/span-->

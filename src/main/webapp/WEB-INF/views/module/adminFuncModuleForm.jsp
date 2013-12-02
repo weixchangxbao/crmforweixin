@@ -28,17 +28,15 @@
 								  <input class="input-xlarge focused" name="name"  type="text" value="${module.name}">
 								</div>
 							  </div>
-							  <c:if test="${module==null}">							  
 							   <div class="control-group">
 								<label class="control-label" for="selectError3">模块位置</label>
 								<div class="controls">
 								  <select id="type" name="moduleType">
-									<option value="0">Top</option>
-									<option value="1">Buttom</option>
+									<option value="0" <c:if test="${module.type=='TOP'}">  selected="selected"</c:if>>Top</option>
+									<option value="1" <c:if test="${module.type=='BUTTOM'}">  selected="selected"</c:if>>Buttom</option>
 								  </select>
 								</div>
 							  </div>
-							</c:if>
 							  <div class="control-group">
 								<label class="control-label" for="focusedInput">链接地址</label>
 								<div class="controls">
@@ -49,10 +47,13 @@
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块位置</label>
 							  <div class="controls">
-								<input class="input-xlarge focuse" name="orderIndex" type="text" value="${module.orderIndex }">
+								<input class="input-xlarge focuse" name="orderIndex" type="text">
 								<span>（请填入数字，从1开始）</span>
 							  </div>
 							  </div>	
+							  </c:if>
+							  <c:if test="${module!=null}">
+								<input class="input-xlarge focuse" name="orderIndex" type="text" value="${module.orderIndex }" style="display:none">
 							  </c:if>
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块图片</label>

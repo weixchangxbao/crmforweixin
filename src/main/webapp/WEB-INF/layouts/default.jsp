@@ -152,7 +152,7 @@
     		
     		function switch_theme(theme_name)
     		{
-    			$('#bs-css').attr('href','/basic/static/css/bootstrap-'+theme_name+'.css');
+    			$('#bs-css').attr('href','${ctx}/static/css/bootstrap-'+theme_name+'.css');
     		}
     	}
     </script>

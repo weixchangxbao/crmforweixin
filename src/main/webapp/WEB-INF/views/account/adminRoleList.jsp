@@ -32,8 +32,8 @@
                    <thead>
                        <tr>
                            <th>角色名</th>
-                           <th>创建时间</th>
                            <th>创建人</th>
+                           <th>创建时间</th>
                            <th>功能</th>
                        </tr>
                    </thead>   
