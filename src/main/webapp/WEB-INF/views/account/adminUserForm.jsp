@@ -39,7 +39,7 @@
 							  <div class="control-group">
 								<label class="control-label" for="checkpassword">密码确认</label>
 								<div class="controls">
-								  <input class="input-xlarge"  id="checkpassword" type="password" >
+								  <input class="input-xlarge"  id="checkpassword" name="checkpassword" type="password" >
 								</div>
 							  </div>
 							   <div class="control-group">
