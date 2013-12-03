@@ -34,8 +34,8 @@
 						  </c:forEach>
 						  <input id="ids" name="ids" style="display:none">
 							<div class="form-actions">
-							  <button type="submit" class="btn btn-primary">Save changes</button>
-							  <button type="reset" class="btn">Cancel</button>
+							  <button id="saveBtn" class="btn btn-primary">Save changes</button>
+							  <button type="reset" class="btn" onclick="history.back()">Cancel</button>
 							</div>
 						  </fieldset>
 						</form>   
@@ -46,29 +46,28 @@
 			</div><!--/row-->
     	<script type="text/javascript">
 			function doBodyInit(){
-				
 				$('input:checkbox').each(function(){
-					var ids = $('#ids').val();
 					if($(this).attr('isChecked')=='true'){
 						$(this).attr('checked',true);
-						if(ids){
+					}
+				});
+				
+				$('#saveBtn').click(function(){
+					var ids ;
+					$('input:checked').each(function(index){
+						if(index != 0){
 							ids = ids + ',' + $(this).val();
 						}else{
 							ids = $(this).val();
 						}			
-						$('#ids').val(ids);
-					}
-				});
-	
-				$('input:checkbox').click(function(){
-					var ids = $('#ids').val();
-					if(ids){
-						ids = ids + ',' + $(this).val();
-					}else{
-						ids = $(this).val();
-					}
+							
+						
+					});
 					$('#ids').val(ids);
-				});
+				})
+				
+	
+				
 			}    	
     	</script>
 	</body>

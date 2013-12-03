@@ -37,8 +37,8 @@
 						  </c:forEach>
 						  <input id="chosedPermission" name="chosedPermission" style="display:none">
 							<div class="form-actions">
-							  <button type="submit" class="btn btn-primary">Save changes</button>
-							  <button type="reset" class="btn">Cancel</button>
+							  <button id="saveBtn" class="btn btn-primary">Save changes</button>
+							  <button type="reset" class="btn" onclick="history.back()">Cancel</button>
 							</div>
 						  </fieldset>
 						</form>   
@@ -50,28 +50,26 @@
     	<script type="text/javascript">
 			function doBodyInit(){
 				
-				$('input:checkbox').each(function(){
-					var ids = $('#chosedPermission').val();
-					if($(this).attr('isChecked')=='true'){
-						$(this).attr('checked',true);
-						if(ids){
+				$('#saveBtn').click(function(){
+					var ids ;
+					$('input:checked').each(function(index){
+						if(index != 0){
 							ids = ids + ',' + $(this).val();
 						}else{
 							ids = $(this).val();
 						}			
-						$('#chosedPermission').val(ids);
+							
+						
+					});
+					$('#chosedPermission').val(ids);
+				})
+				
+				$('input:checkbox').each(function(){
+					if($(this).attr('isChecked')=='true'){
+						$(this).attr('checked',true);
 					}
 				});
 	
-				$('input:checkbox').click(function(){
-					var ids = $('#chosedPermission').val();
-					if(ids){
-						ids = ids + ',' + $(this).val();
-					}else{
-						ids = $(this).val();
-					}
-					$('#chosedPermission').val(ids);
-				});
 			}    	
     	</script>
 	</body>

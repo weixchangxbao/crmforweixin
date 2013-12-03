@@ -1,12 +1,17 @@
 package com.brother.basic.service.log;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Component;
 
 import com.brother.basic.entity.ActionLog;
@@ -34,7 +39,11 @@ public class ActionLogService {
 	}
 	
 	public Page<ActionLog> findActionByPage(SearchBean search){
-		Pageable pageable = new PageRequest(search.getPage(), search.getiDisplayLength());
+		List<Order> orders = new ArrayList<Order>();
+		orders.add(new Order(Direction.DESC, "actionTime"));
+		orders.add(new Order(Direction.ASC,"username"));
+		Sort sort = new Sort(orders);
+		Pageable pageable = new PageRequest(search.getPage(), search.getiDisplayLength(),sort);
 		if(search.getsSearch()!=null && !search.getsSearch().equals("")){
 			actionLogDao.findBySearch( search.getsSearch(),pageable);
 		}

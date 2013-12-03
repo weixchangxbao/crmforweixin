@@ -43,6 +43,9 @@
 							  </div>
 							  </div>	
 							  </c:if>
+							  <c:if test="${module!=null }">
+								<input class="input-xlarge focuse" name="orderIndex" type="text" value="${module.orderIndex}" style="display:none">
+							  </c:if>
 							  <div class="control-group">
 								<label class="control-label" for="fileInput">模块图片</label>
 							  <div class="controls">

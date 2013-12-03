@@ -46,7 +46,7 @@
 							  <div class="control-group">
 							  <label class="control-label" for="date01">部门</label>
 							  <div class="controls">
-								<input type="text" class="input-xlarge" id="department" name="department" >
+								<input type="text" class="input-xlarge" id="department" name="department" value="${user.department }">
 							  </div>
 							  </div>
 							  <div class="control-group" for="mobilephone">

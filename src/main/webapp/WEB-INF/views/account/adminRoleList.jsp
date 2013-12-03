@@ -123,7 +123,7 @@
      							{"mData" : function(obj,type,val){
      								return  ''+
      										<shiro:hasPermission name="role:update">
-     										'<a class=\"btn btn-info\" onclick=\"updateRole('+obj.id+')\">'+
+     										'<a class=\"btn btn-info\" refId=\"'+obj.id+'\" val=\"'+obj.name+'\" onclick=\"updateRole('+obj.id+')\">'+
      										'<i class="icon-edit icon-white"></i>'+  
      											'编辑'+                                            
      										'</a>'+
@@ -211,7 +211,7 @@
      	
  		function updateRole(id){
  			$('#roleUpdate input[name="id"]').val(id);
- 			
+ 			$('#roleUpdate input[name="name"]').val($('a[refId="'+id+'"]').attr('val'));
  			$('#roleUpdate').dialog('open');
  		}
  		

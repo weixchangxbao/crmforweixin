@@ -32,12 +32,12 @@ public class Role extends IdEntity{
 	@ManyToMany(mappedBy="roles",targetEntity=User.class ,fetch=FetchType.LAZY,cascade={CascadeType.REFRESH})
 	private Collection<User> users = new ArrayList<User>();
 	
-	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.REFRESH )
+	@ManyToMany(fetch=FetchType.LAZY,cascade={CascadeType.REFRESH})
 	@JoinTable(name="BT_RolePermission",joinColumns={@JoinColumn(name="role_id")},
 		inverseJoinColumns={@JoinColumn(name="permission_id")})
 	private Collection<Permission> permissions = new ArrayList<Permission>();
 	
-	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.REFRESH )
+	@ManyToMany(fetch=FetchType.LAZY,cascade={CascadeType.REFRESH})
 	@JoinTable(name="BT_RoleRelModule",joinColumns={@JoinColumn(name="role_id")},
 		inverseJoinColumns={@JoinColumn(name="module_id")})
 	private Collection<Module> modules = new ArrayList<Module>();
@@ -69,7 +69,8 @@ public class Role extends IdEntity{
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
+	
+	@JsonIgnore
 	public Collection<User> getUsers() {
 		return users;
 	}
@@ -105,4 +106,11 @@ public class Role extends IdEntity{
 		return "Role [name=" + name + ", code=" + code + "]";
 	}
 		
+	public void removeAllModules(){
+		this.modules.clear();
+	}
+	
+	public void removeAllPermission(){
+		this.permissions.clear();
+	}
 }

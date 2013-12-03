@@ -28,4 +28,8 @@ public class PermissionService {
 			return null;
 		}
 	}
+	
+	public Permission getPermissionById(Long id){
+		return permissionDao.findOne(id);
+	}
 }

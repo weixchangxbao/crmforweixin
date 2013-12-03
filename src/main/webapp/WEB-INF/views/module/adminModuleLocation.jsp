@@ -63,7 +63,7 @@
       	<form id="locationForm" action="${ctx}/admin/module/updateLocation" method="post">
       		<input id="locations" name="locations" style="display:none">
       	</form>
-        <p>是否确定删除信息！</p>
+        <p>是否确定变更位置！</p>
      </div>
      </div>
       			

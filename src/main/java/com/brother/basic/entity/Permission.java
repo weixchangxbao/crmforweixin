@@ -3,6 +3,7 @@ package com.brother.basic.entity;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -24,7 +25,7 @@ public class Permission extends IdEntity{
 	@Transient
 	private boolean chosed;
 	
-	@ManyToMany(mappedBy="permissions" ,fetch=FetchType.LAZY)
+	@ManyToMany(mappedBy="permissions" ,fetch=FetchType.LAZY,cascade={CascadeType.REFRESH})
 	private Collection<Role> roles = new ArrayList<Role>();
 
 	public String getRule() {

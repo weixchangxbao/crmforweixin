@@ -121,7 +121,7 @@
 	 								roleIds = roleIds+','+$(this).val();
 	 							}
 	 						})
-	 						$('#rolenames').text(rolelist);
+	 						$('#rolename').val(rolelist);
 	 						$('#roleids').val(roleIds);
 	 						$('#roleModal').dialog('close');	
 	 					},
