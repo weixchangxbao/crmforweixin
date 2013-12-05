@@ -240,6 +240,16 @@ public class ModuleController {
 		}
 	}
 	
+	@RequestMapping(value="checkTopNum")
+	public void checkTopNum(HttpServletResponse response) throws IOException{
+		int count = moduleService.findTopModuleCount();
+		if(count == 4){
+			response.getWriter().write("false");
+		}else{
+			response.getWriter().write("true");
+		}
+	}
+	
 	@RequestMapping(value="/updatePictureLocation")
 	public String updatePictureLocation(@RequestParam("original") Long original,@RequestParam("changeto") Long changeto){
 		Module mo = moduleService.getModuleById(original);

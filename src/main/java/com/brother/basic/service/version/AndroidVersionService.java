@@ -32,5 +32,9 @@ public class AndroidVersionService {
 		version.setCreateTime(new Date());
 		return androidVersionDao.save(version);
 	}
+	
+	public void delete(Long id){
+		androidVersionDao.delete(id);
+	}
 
 }

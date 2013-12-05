@@ -101,6 +101,7 @@
 				
 				//config picture upload
 				$('#file_upload').uploadify({
+					'fileSizeLimit' : '300KB',
 					'swf'      : '${ctx}/static/misc/uploadify.swf',
 					'uploader' : '${ctx}/admin/module/pictupload',
 					"fileObjName":"picture",

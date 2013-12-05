@@ -12,4 +12,5 @@ public interface ActionLogDao extends PagingAndSortingRepository<ActionLog,Long>
 
 	@Query("select a from ActionLog a where a.username like %:name% or a.actionName like %:name%")
 	public Page<ActionLog> findBySearch(@Param("name") String name,Pageable pageable);
+	
 }

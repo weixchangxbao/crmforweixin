@@ -48,4 +48,8 @@ public interface ModuleDao extends PagingAndSortingRepository<Module, Long>, Jpa
 
 	@Query("select m from Module m where m.type=?1 and m.orderIndex = ?2")
 	public Module findByTypeAndOrderIndex(ModuleType type,int orderIndex);
+	
+	@Query("select count(*) from Module m where m.type = 0")
+	public int findTopModuleCount();
+	
 }

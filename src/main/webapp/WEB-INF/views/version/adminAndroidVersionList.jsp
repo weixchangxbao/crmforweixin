@@ -36,6 +36,7 @@
                            <th>描述</th>
                            <th>创建人</th>
                            <th>创建时间</th>
+                           <th>功能</th>
                        </tr>
                    </thead>   
                </table>            
@@ -59,7 +60,13 @@
      							{"sName":"path","mData": "path" ,"sClass":"center"},
      							{"sName":"description","mData": "description"}, 
      							{"mData":"createBy"},
-     							{"mData":"createTime"}
+     							{"mData":"createTime"},
+     							{"mData":function(obj,type,val){
+     								return '<a class=\"btn btn-info\" href=\"${ctx}/admin/version/delete/'+obj.id+'\">'+
+											'<i class="icon-edit icon-white"></i>'+  
+											'Delete'+                                            
+											'</a>';
+     							}}
      						],
      			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
      			"sPaginationType": "bootstrap",

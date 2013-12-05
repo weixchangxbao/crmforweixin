@@ -19,7 +19,7 @@
                  <h2><i class="icon-user"></i> 图片模块管理</h2>
                   <div class="box-icon">
                   <shiro:hasPermission name="picture:create">
-				<a class="btn btn-info" href="${ctx}/admin/module/pictform">
+				<a class="btn btn-info"  href="${ctx}/admin/module/pictform">
 					<i class="icon-edit icon-white"></i>  
 						新增                                            
 					</a>
@@ -60,6 +60,7 @@
         <p>是否确定更新位置信息！</p>
       </div>
       </div>
+      
      <script type="text/javascript">
      	function doBodyInit(){
      		
@@ -135,6 +136,7 @@
  			    	  }
  			      }
  			});
+     		
      	}
      	
      	function down(id){

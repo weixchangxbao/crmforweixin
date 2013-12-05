@@ -49,4 +49,8 @@ public class ActionLogService {
 		}
 		return actionLogDao.findAll(pageable);
 	}
+	
+	public void delete(Long id){
+		actionLogDao.delete(id);
+	}
 }

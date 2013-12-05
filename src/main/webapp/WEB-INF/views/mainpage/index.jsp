@@ -7,8 +7,8 @@
 <html>
 <head>
  	<title>UI Starter</title>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<link rel="stylesheet" type="text/css" href="${ctx}/static/bootstrap/2.1.1/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="${ctx}/static/styles/default-index.css" />
 	<link rel="stylesheet" type="text/css" href="${ctx}/static/jq-mobi-plugs/touchTouch.css"/>
@@ -19,6 +19,7 @@
     	$(function(){
     		$('#thumbs a').touchTouch();
     	})
+    	
     </script>
 </head>
 <body>

@@ -17,6 +17,7 @@ import org.dom4j.io.XMLWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,6 +65,12 @@ public class VersionController {
 		result.setiTotalRecords(total);
 		result.setsEcho(search.getsEcho());
 		return result;
+	}
+	
+	@RequestMapping(value="/delete/{id}")
+	public String delete(@PathVariable("id") Long id){
+		androidVersionService.delete(id);
+		return "redirect:/admin/version";
 	}
 	
 	@RequestMapping(value="/createAndroidVersion")

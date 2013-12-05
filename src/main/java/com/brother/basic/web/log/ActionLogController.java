@@ -1,10 +1,14 @@
 package com.brother.basic.web.log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.brother.basic.entity.ActionLog;
@@ -33,5 +37,17 @@ public class ActionLogController {
 		result.setiTotalRecords(total);
 		result.setsEcho(search.getsEcho());
 		return result;
+	}
+	
+	@RequestMapping(value="delete")
+	public String delete(@RequestParam("ids") String ids){
+		if(ids != null && !ids.equals("")){
+			String[] idArray = ids.split(",");
+			for(String id: idArray){
+				actionLogService.delete(Long.parseLong(id));
+			}
+			
+		}
+		return "redirect:/admin/logs";
 	}
 }

@@ -89,4 +89,8 @@ public class ModuleService {
 	public Module findByTypeAndOrederIndex(ModuleType type,int orderIndex){
 		return moduleDao.findByTypeAndOrderIndex(type, orderIndex);
 	}
+
+	public int findTopModuleCount() {
+		return moduleDao.findTopModuleCount();
+	}
 }

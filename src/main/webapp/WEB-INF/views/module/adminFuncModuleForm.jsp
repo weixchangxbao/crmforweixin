@@ -74,7 +74,7 @@
 							  </div>	
 							  </div>
 							  <div class="form-actions">
-								<button type="submit" class="btn btn-primary">Save changes</button>
+								<button id="submitBtn" class="btn btn-primary">Save changes</button>
 								<button class="btn" onclick="history.back()">Cancel</button>
 							  </div>
 							</fieldset>
@@ -84,8 +84,44 @@
 			
 			</div><!--/row-->
 			
+			
+			 <div id="addModal" title="新增提示">
+		      <div class="modal-body">
+		        <p>顶部模块最大为4个，当前值已经满足，无法提交。</p>
+		      </div>
+		     </div>
+		      
+		      
 		<script type="text/javascript">
 			function doBodyInit(){
+				
+				$('#submitBtn').click(function(check){
+					if($('#type').val() == 0){
+						check.preventDefault();
+						$.ajax({
+							url:'${ctx}/admin/module/checkTopNum',
+							success:function(data){
+								if(data == 'false'){
+									$("#addModal").dialog('open');
+								}else{
+									$('form').submit();
+								}
+							}
+						})
+					}
+				});
+				
+				$("#addModal").dialog({
+	 				autoOpen: false,
+	 				height: 200,
+	 			      width: 350,
+	 			      modal: true,
+	 			      buttons:{
+	 			    	  "关闭":function(){
+	 			    		  $(this).dialog("close");
+	 			    	  }
+	 			      }
+	 			});
 				
 				$('form').validate({
 					rules:{
@@ -109,6 +145,7 @@
 				})
 				//config picture upload
 				$('#file_upload').uploadify({
+					'fileSizeLimit' : '300KB',
 					'swf'      : '${ctx}/static/misc/uploadify.swf',
 					'uploader' : '${ctx}/admin/module/pictupload',
 					"fileObjName":"picture",

@@ -157,15 +157,14 @@ public class RoleController {
 	public String updatePermission(@RequestParam("chosedPermission") String chosedPermission,@RequestParam("roleId") Long roleId,HttpServletRequest request){
 		if(chosedPermission!=null && !chosedPermission.equals("")){
 			String[] strPermissionIds = chosedPermission.split(",");
-			List<Long> ids = new ArrayList<Long>();
+			List<Permission> permissions = new ArrayList<Permission>();
 			for(String permissionId : strPermissionIds){
-				ids.add(Long.parseLong(permissionId));
+				permissions.add(permissionService.getPermissionById(Long.parseLong(permissionId)));
 			}
-			List<Permission> permissions = permissionService.findByIdIn(ids);
 			Role role  = roleService.getRoleById(roleId);
 			if(role != null){
 				role.setPermissions(permissions);
-				actionLogService.addLog("更新权限", role.toString()+",permission:"+ids, request.getRemoteAddr());
+				actionLogService.addLog("更新权限", role.toString()+",permission:"+chosedPermission, request.getRemoteAddr());
 				roleService.saveOrUpdate(role);
 			}
 		}

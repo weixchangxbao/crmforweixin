@@ -17,11 +17,20 @@
          <div class="box span12">
              <div class="box-header well" data-original-title>
                  <h2><i class="icon-user"></i> 日志管理</h2>
+                 <div class="box-icon">
+	                <shiro:hasPermission name="log:delete"> 
+					<a class="btn btn-info" id="deleteBtn">
+						<i class="icon-edit icon-white"></i>  
+							删除                                            
+						</a>
+					</shiro:hasPermission>
+	             </div>
              </div>
              <div class="box-content">
                  <table class="table table-striped table-bordered bootstrap-datatable usertable">
                    <thead>
                        <tr>
+                       	   <th><input name="allCheck" type="checkbox"></th>
                            <th>行为</th>
                            <th>操作人</th>
                            <th>IP</th>
@@ -35,16 +44,44 @@
      
      </div><!--/row-->
       
-   
+   	<div style="display:none">
+   		<form action="${ctx}/admin/logs/delete" method="post">
+   			<input name="ids" id="ids">
+   		</form>
+   	</div>
+   	
      <script type="text/javascript">
      	function doBodyInit(){
+     		
+     		$('input[name="allCheck"]').toggle(function(){
+     			$(':checkbox').attr('checked',true);
+     		},function(){
+     			$(':checkbox').attr('checked',false);
+     		})
+     		
+     		$('#deleteBtn').click(function(){
+     			var ids;
+     			$('input[name="deleteCheck"]:checked').each(function(index){
+     				if(index ==0){
+     					ids = $(this).attr('val');
+     				}else{
+						ids = ids + ',' + $(this).attr('val');   					
+     				}
+     			});
+     			$('#ids').val(ids);
+     			$('form').submit();
+     		});
      		
      		$('.usertable').dataTable( {
      			"bProcessing": true,
      			"bServerSide": true,
      			"sAjaxSource": "${ctx}/admin/logs",
      			"sServerMethod":"POST",
+     			"bSort": false ,
      			"aoColumns": [
+     			              	{"mData":function(obj){
+     			              		return '<input type=\"checkbox\" name=\"deleteCheck\" val=\"'+obj.id+'\">';
+     			              	},"sWidth":'5'},
      							{"sName":"actionName","mData": "actionName","sWidth":"10%" },
      							{"sName":"username","mData": "username","sClass":"center" },
      							{"sName":"ip","mData": "ip" ,"sClass":"center"},
